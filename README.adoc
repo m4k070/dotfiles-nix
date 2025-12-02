@@ -1,0 +1,5 @@
+== applying the configuration
+
+---
+nix run nixpkgs#home-manager -- switch --flake .#m4k070
+---
