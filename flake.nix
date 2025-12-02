@@ -15,10 +15,16 @@
       let
         pkgs = import nixpkgs { inherit system; };
       in {
+        nixosConfigurations = {
+          myNixOS = nixpkgs.lib.nixosSystem {
+            inherit system;
+            modules = [./system/configuration.nix];
+          };
+        };
         legacyPackages = {
           inherit (pkgs) home-manager;
           homeConfigurations = {
-            m4k070 = home-manager.lib.homeManagerConfiguration {
+            myHome = home-manager.lib.homeManagerConfiguration {
               pkgs = pkgs;
               extraSpecialArgs = {
                 inherit inputs;
