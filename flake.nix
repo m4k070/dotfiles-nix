@@ -7,31 +7,36 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, home-manager, flake-utils, ... }@inputs:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs { inherit system; };
-      in {
-        nixosConfigurations = {
-          myNixOS = nixpkgs.lib.nixosSystem {
-            inherit system;
-            modules = [./system/configuration.nix];
-          };
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+    nixosConfigurations = {
+      myNixOS = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+	    ./nixos/configuration.nix
+	    home-manager.nixosModules.default
+	    {
+	      home-manager = {
+	        useGlobalPkgs = true;
+	        useUserPackages = true;
+	        users.makoto = ./home/home.nix;
+	      };
+	    }
+	  ];
         };
-        legacyPackages = {
-          inherit (pkgs) home-manager;
-          homeConfigurations = {
-            myHome = home-manager.lib.homeManagerConfiguration {
-              pkgs = pkgs;
-              extraSpecialArgs = {
-                inherit inputs;
-              };
-              modules = [./home/home.nix];
-            };
-          };
+      };
+    homeConfigurations = {
+      myHome = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+	  config.allowUnfree = true;
+	};
+        extraSpecialArgs = {
+	  inherit inputs;
         };
-      });
+        modules = [./home/home.nix];
+      };
+    };
+  };
 }

@@ -1,3 +1,9 @@
+== NixOS rebuild
+
+----
+sudo nixos-rebuild switch --flake .#myNixOS
+----
+
 == appry home-manager Configuration
 
 ----

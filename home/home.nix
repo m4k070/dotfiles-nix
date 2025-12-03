@@ -33,6 +33,8 @@
      };
      programs.git = {
        enable = true;
+       settings.user.name = "Makoto Ito";
+       settings.user.email = "m4k070@pm.me";
      };
      programs.gh = {
        enable = true;
