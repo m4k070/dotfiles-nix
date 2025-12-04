@@ -8,7 +8,6 @@
        stateVersion = "25.11";
 
        packages = with pkgs; [
-         vim
          git
          curl
          neovim
@@ -17,6 +16,8 @@
          bat
          mise
          jq
+         starship
+         eza
        ];
      };
 
@@ -25,11 +26,16 @@
        enable = true;
        autocd = true;
        enableCompletion = true;
-       # enableAutosuggestions = true;
+       autosuggestion.enable = true;
        syntaxHighlighting.enable = true;
        shellAliases = {
          cat = "bat";
+         ls = "eza --icons";
+         vi = "nvim";
+         vim = "nvim";
        };
+       history.size = 10000;
+       history.ignoreAllDups = true;
      };
      programs.git = {
        enable = true;
