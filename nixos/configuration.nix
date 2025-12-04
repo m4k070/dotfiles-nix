@@ -7,7 +7,8 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      #./hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
     ];
 
   # Bootloader.
@@ -26,6 +27,8 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  time.hardwareClockInLocalTime = true;
 
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
