@@ -1,11 +1,15 @@
 == NixOS rebuild
 
-----
-sudo nixos-rebuild switch --flake .#myNixOS
-----
-
-== appry home-manager Configuration
+create symbolic link to `/etc/nixos`
 
 ----
-nix run nixpkgs#home-manager -- switch --flake .#myHome
+sudo nixos-rebuild switch --flake .#
 ----
+
+== Folders
+
+hosts :: machine specify settings
+
+home :: home-manager settings
+
+nixos :: base nixOS setting

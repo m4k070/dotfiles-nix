@@ -2,7 +2,7 @@
   let
     inherit (import ./options.nix) username;
   in {
-    imports = [
-      ./base.nix
-    ];
+     imports = [
+       ./base.nix
+     ];
   }

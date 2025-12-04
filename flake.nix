@@ -11,21 +11,37 @@
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations = {
-      myNixOS = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-	    ./nixos/configuration.nix
-	    home-manager.nixosModules.default
-	    {
-	      home-manager = {
-	        useGlobalPkgs = true;
-	        useUserPackages = true;
-	        users.makoto = ./home/home.nix;
-	      };
-	    }
-	  ];
-        };
+      sirius = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+	  ./hosts/sirius/configuration.nix
+	  home-manager.nixosModules.default
+	  {
+	    home-manager = {
+	      useGlobalPkgs = true;
+	      useUserPackages = true;
+	      users.makoto = ./home/work.nix;
+	      backupFileExtension = ".backup";
+	    };
+	  }
+	];
       };
+      vega =  nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+	  ./hosts/vega/configuration.nix
+	  home-manager.nixosModules.default
+	  {
+	    home-manager = {
+	      useGlobalPkgs = true;
+	      useUserPackages = true;
+	      users.makoto = ./home/home.nix;
+	      backupFileExtension = ".backup";
+	    };
+	  }
+	];
+      };
+    };
     homeConfigurations = {
       myHome = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
