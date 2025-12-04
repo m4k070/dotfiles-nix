@@ -62,6 +62,7 @@
       noto-fonts-color-emoji
       nerd-fonts.noto
       nerd-fonts.jetbrains-mono
+      migu
     ];
     fontDir.enable = true;
     fontconfig = {
