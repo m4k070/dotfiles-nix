@@ -22,6 +22,14 @@
      };
 
      programs.home-manager.enable = true;
+     programs.vivaldi = {
+       enable = true;
+       commandLineArgs = [
+         "--enable-features=UseOzonePlatform"
+	 "--ozone-platform=wayland"
+	 "--enable-wayland-ime"
+       ];
+     };
      programs.zsh = {
        enable = true;
        autocd = true;

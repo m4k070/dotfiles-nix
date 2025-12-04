@@ -51,7 +51,11 @@
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
-    fcitx5.addons = [pkgs.fcitx5-mozc];
+    fcitx5.addons = with pkgs; [
+      fcitx5-mozc
+      kdePackages.fcitx5-qt
+      qt6Packages.fcitx5-configtool
+    ];
     fcitx5.waylandFrontend = true;
   };
 
@@ -130,7 +134,11 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+    alacritty
+    bitwarden-desktop
+    starship
     vivaldi
+    vivaldi-ffmpeg-codecs
   ];
 
   nixpkgs.config.allowUnfree = true;
