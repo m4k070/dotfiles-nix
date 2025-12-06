@@ -20,6 +20,13 @@
          eza
        ];
      };
+     
+     services = {
+       gnome-keyring.enable = true;
+     };
+
+     xdg.enable = true;
+     xdg.mime.enable = true;
 
      programs.home-manager.enable = true;
      programs.vivaldi = {

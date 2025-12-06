@@ -57,6 +57,7 @@
     ];
     fcitx5.waylandFrontend = true;
   };
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   fonts = {
     packages = with pkgs; [
@@ -114,6 +115,8 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  xdg.portal.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.makoto = {
     isNormalUser = true;
@@ -139,6 +142,7 @@
     starship
     vivaldi
     vivaldi-ffmpeg-codecs
+    xwayland-satellite
   ];
 
   nixpkgs.config.allowUnfree = true;
