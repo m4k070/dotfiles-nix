@@ -1,6 +1,7 @@
 {
     "position": "bottom",
     // "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-left": ["niri/workspaces", "niri/window"],
     /* "modules-center": [], */
     /* "modules-right": ["tray", "custom/scratchpad-indicator", "pulseaudio", "custom/power"], */
     "modules-right": ["tray", "pulseaudio", "clock", "custom/power"],
