@@ -24,5 +24,5 @@
       ];
     };
     
-    xdg.configFile."niri/config.kdl".source = ./config.kdl;
+    xdg.configFile."../configs/niri/config.kdl".source = ./config.kdl;
   }

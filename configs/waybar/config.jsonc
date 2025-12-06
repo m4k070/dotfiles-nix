@@ -1,0 +1,63 @@
+{
+    "position": "bottom",
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    /* "modules-center": [], */
+    /* "modules-right": ["tray", "custom/scratchpad-indicator", "pulseaudio", "custom/power"], */
+    "modules-right": ["tray", "pulseaudio", "clock", "custom/power"],
+
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+       	"format-ethernet": "{ifname} ",
+        "format-disconnected": "", 
+        "max-length": 50,
+        "on-click": "foot -e 'nmtui'"
+    },
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		},
+		"on-click": "bash /home/dg/.local/bin/toggleRemote"
+	},
+	"tray": {
+		"icon-size": 15,
+		"spacing": 10
+	},
+	"clock": {
+		"format": "{:%Y/%m/%d %H:%M}",
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+			// "format-alt": "{:%Y-%m-%d}"
+			// "on-click": "gnome-calendar"
+	},
+	"pulseaudio": {
+		"format": "{volume}% {icon} ",
+		"format-bluetooth": "{volume}% {icon} {format_source}",
+		"format-bluetooth-muted": " {icon} {format_source}",
+		"format-muted": "0% {icon} ",
+		"format-source": "{volume}% ",
+		"format-source-muted": "",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": ["", "", ""]
+		},
+		"on-click": "pavucontrol"
+	},
+	"custom/power": {
+		"format": " ",
+		"on-click": "wlogout"
+	},
+	"hyprland/workspaces": {
+		"format": "{icon}",
+		"on-click": "activate",
+		"sort-by-number": true
+	},
+	"hyprland/window": {
+		"separate-outputs": true
+	}
+}
