@@ -24,5 +24,6 @@
       ];
     };
     
-    xdg.configFile."../configs/niri/config.kdl".source = ./config.kdl;
+    xdg.configFile."niri/config.kdl".source = ../configs/config.kdl;
+    xdg.configFile."waybar/config.jsonc".source = ../configs/waybar/config.jsonc;
   }
