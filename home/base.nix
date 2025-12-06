@@ -64,6 +64,7 @@
      programs.starship = {
        enable = true;
      };
+     xdg.configFile."starship.toml".source = ../configs/starship/starship.toml;
 
      # dotfiles を管理するならここで設定追加
      # home.file.".zshrc".text = ''

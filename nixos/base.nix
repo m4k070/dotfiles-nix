@@ -141,6 +141,7 @@
     bitwarden-desktop
     niri
     starship
+    udev-gothic
     vivaldi
     vivaldi-ffmpeg-codecs
     xwayland-satellite
