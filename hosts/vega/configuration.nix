@@ -18,6 +18,7 @@
   
   environment.systemPackages = [
     #pkgs.niri
+    pkgs.protonup-qt
   ];
   
   services.xserver.videoDrivers = ["nvidia"];
