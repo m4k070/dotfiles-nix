@@ -188,8 +188,9 @@ return {
       require("mason-lspconfig").setup({
         automatic_installation = true,
       })
-      require("lspconfig").ts_ls.setup{}
-      require("lspconfig").gopls.setup{}
+      vim.lsp.enable("ts_ls")
+      vim.lsp.enable("gopls")
+      vim.lsp.enable("clojure")
 
       vim.keymap.set("n", "<F12>", "<cmd>:lua vim.lsp.buf.definition()<CR>")
       vim.keymap.set("n", "<leader>e", "<cmd>:lua vim.diagnostic.open_float()<CR>",

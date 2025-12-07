@@ -152,6 +152,7 @@
     vivaldi
     vivaldi-ffmpeg-codecs
     xwayland-satellite
+    zig
   ];
 
   nixpkgs.config.allowUnfree = true;

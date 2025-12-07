@@ -1,9 +1,18 @@
-/* Global styles for the bar and text */
+/*
+ * Nothing Product Inspired Waybar Style
+ * - Minimalist, Transparent, Monochromatic, Dot-matrix inspired.
+ */
+
 window#waybar {
-    background: rgba(46, 52, 64, 0.9); /* Semi-transparent dark background */
-    border-radius: 5px;
-    font-family: "UDEV Gothic", "Symbols Nerd Font Mono", sans-serif;
-    font-size: 14px;
+    /* Nothing風: ほぼ完全な透明背景 */
+    background: rgba(10, 10, 10, 0.05); /* 非常に薄い半透明のダーク背景 */
+    color: #ffffff; /* すべてのテキストを白に */
+    border: 1px solid #333333; /* 非常に細いグレーのボーダーを追加し、シャープな見た目に */
+    border-radius: 0px; /* 角丸を削除または最小限に */
+
+    /* Nothing風フォント: ドットマトリクス風、またはモノスペースフォント */
+    font-family: "Terminus", "Monospace", "Symbols Nerd Font Mono", sans-serif;
+    font-size: 13px; /* 少し小さめに調整 */
 }
 
 /* Base style for all modules */
@@ -11,44 +20,62 @@ window#waybar {
 #pulseaudio,
 #bluetooth,
 #clock,
-#tray > .item {
-    padding: 0 10px;
-    margin: 0 3px;
-    color: #e5e9f0; /* Light text color */
+#tray > .item,
+#battery,
+#network {
+    padding: 0 12px; /* パディングを少し広げ、クリーンな分離感を出す */
+    margin: 0 0px; /* モジュール間のマージンを削除して、均一なバーに */
+    color: #eeeeee; /* 薄いグレーのテキスト色 */
+    background: transparent; /* 背景は透明を維持 */
 }
 
 /* Workspaces module styling */
 #workspaces button {
-    border-bottom: 3px solid transparent; /* Subtle indicator */
+    border-bottom: 2px solid transparent; 
+    transition: all 0.2s ease-in-out; /* スムーズなトランジションを追加 */
 }
 
+/* アクティブなワークスペース: Nothingの強調色（白または明るい色）*/
 #workspaces button.active {
-    color: #81a1c1; /* Active workspace color */
-    border-color: #81a1c1;
+    color: #ffffff; /* アクティブなワークスペースを最も明るい白に */
+    border-color: #ffffff;
+    font-weight: bold;
 }
 
+/* 非アクティブなワークスペース: 薄いグレー */
+#workspaces button {
+    color: #888888; 
+}
+
+/* ホバー時のスタイル */
 #workspaces button:hover {
-    background-color: #434c5e;
+    background-color: rgba(255, 255, 255, 0.1); /* ホバー時に薄い透明なハイライト */
+    color: #ffffff;
+    border-color: #ffffff;
 }
 
-/* Individual module coloring */
-#pulseaudio {
-    color: #b48ead;
+/* Individual module coloring - モノクロ基調に統一 */
+
+#pulseaudio,
+#bluetooth,
+#clock,
+#tray > .item,
+#battery,
+#network {
+    color: #ffffff; /* 全体を白で統一 */
+    font-weight: normal;
 }
 
+/* Muted or Alert Status - 警告やミュートは明るい色で強調 */
 #pulseaudio.muted {
-    color: #bf616a; /* Muted color */
+    color: #ff6666; /* 明るい赤（警告色）*/
 }
 
-#bluetooth {
-    color: #8fbcbb;
-}
-
-#clock {
-    color: #a3be8c;
+#battery.critical,
+#network.disconnected {
+    color: #ffaa66; /* 薄いオレンジ（注意色）*/
 }
 
 #tray {
     /* No specific color, inherits from base */
 }
-
