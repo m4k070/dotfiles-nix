@@ -1,94 +1,54 @@
-* {
-	border: none;
-	font-family: Font Awesome, Roboto, Arial, sans-serif;
-	font-size: 13px;
-	color: #ffffff;
-	border-radius: 20px;
-}
-
-window {
-	/*font-weight: bold;*/
-}
+/* Global styles for the bar and text */
 window#waybar {
-	background: rgba(0, 0, 0, 0);
-}
-/*-----module groups----*/
-.modules-right {
-	background-color: rgba(0,119,179,0.6);
-	margin: 2px 5px 2px 0;
-}
-/*
-.modules-center {
-        visibility: hidden;
-}
-*/
-.modules-left {
-	margin: 2px 0 2px 5px;
-	padding: 0 10px 0;
-	background-color: rgba(0,119,179,0.6);
-}
-/*-----modules indv----*/
-#workspaces button {
-	padding: 1px 5px;
-	background-color: transparent;
-}
-#workspaces button:hover {
-	box-shadow: inherit;
-	background-color: rgba(0,153,153,1);
+    background: rgba(46, 52, 64, 0.9); /* Semi-transparent dark background */
+    border-radius: 5px;
+    font-family: "UDEV Gothic", "Symbols Nerd Font Mono", sans-serif;
+    font-size: 14px;
 }
 
-#workspaces button.focused {
-	background-color: rgba(0,43,51,0.85);
-}
-
-#clock,
-#battery,
-#cpu,
-#memory,
-#temperature,
-#network,
+/* Base style for all modules */
+#workspaces button,
 #pulseaudio,
-#custom-media,
-#tray,
-#mode,
-#custom-power,
-#custom-menu,
-#idle_inhibitor {
-	padding: 0 10px;
+#bluetooth,
+#clock,
+#tray > .item {
+    padding: 0 10px;
+    margin: 0 3px;
+    color: #e5e9f0; /* Light text color */
 }
-#mode {
-	color: #cc3436;
-	font-weight: bold;
+
+/* Workspaces module styling */
+#workspaces button {
+    border-bottom: 3px solid transparent; /* Subtle indicator */
 }
-#custom-power {
-	background-color: rgba(0,119,179,0.6);
-	border-radius: 100px;
-	margin: 5px 5px;
-	padding: 1px 1px 1px 6px;
+
+#workspaces button.active {
+    color: #81a1c1; /* Active workspace color */
+    border-color: #81a1c1;
 }
-/*-----Indicators----*/
-#idle_inhibitor.activated {
-	color: #2dcc36;
+
+#workspaces button:hover {
+    background-color: #434c5e;
 }
+
+/* Individual module coloring */
+#pulseaudio {
+    color: #b48ead;
+}
+
 #pulseaudio.muted {
-	color: #cc3436;
+    color: #bf616a; /* Muted color */
 }
-#battery.charging {
-	color: #2dcc36;
+
+#bluetooth {
+    color: #8fbcbb;
 }
-#battery.warning:not(.charging) {
-	color: #e6e600;
+
+#clock {
+    color: #a3be8c;
 }
-#battery.critical:not(.charging) {
-	color: #cc3436;
+
+#tray {
+    /* No specific color, inherits from base */
 }
-#temperature.critical {
-	color: #cc3436;
-}
-/*-----Colors----*/
-/*
- *rgba(0,85,102,1),#005566 --> Indigo(dye)
- *rgba(0,43,51,1),#002B33 --> Dark Green 
- *rgba(0,153,153,1),#009999 --> Persian Green 
- *
- */
+

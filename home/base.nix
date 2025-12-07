@@ -18,6 +18,18 @@
          jq
          starship
          eza
+	 clojure-lsp
+	 svelte-language-server
+	 postgres-language-server
+	 rust-analyzer
+	 marksman
+	 gopls
+	 typescript-language-server
+	 yaml-language-server
+	 vimPlugins.nvim-treesitter-parsers.go
+	 vimPlugins.nvim-treesitter-parsers.typescript
+	 vimPlugins.nvim-treesitter-parsers.json
+	 vimPlugins.nvim-treesitter-parsers.clojure
        ];
      };
      
@@ -65,6 +77,11 @@
        enable = true;
      };
      xdg.configFile."starship.toml".source = ../configs/starship/starship.toml;
+     
+     xdg.configFile."nvim" = {
+       source = ../configs/neovim;
+       recursive = true;
+     };
 
      # dotfiles を管理するならここで設定追加
      # home.file.".zshrc".text = ''
