@@ -144,16 +144,6 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
-    alacritty
-    btop
-    bitwarden-desktop
-    niri
-    starship
-    udev-gothic
-    vivaldi
-    vivaldi-ffmpeg-codecs
-    xwayland-satellite
-    zig
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -165,21 +155,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  programs = {
-    git = {
-      enable = true;
-    };
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-    };
-    zsh = {
-      enable = true;
-    };
-  };
 
   # List services that you want to enable:
 

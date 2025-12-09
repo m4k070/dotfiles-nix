@@ -8,16 +8,32 @@ in {
     stateVersion = "25.11";
 
     packages = with pkgs; [
+      alacritty
       bat
+      bitwarden-desktop
+      blender
+      btop 
       curl
+      dbeaver-bin
       eza
+      gimp
       git
-      htop
       jq
+      logseq
       mako
+      mangowc
       mise
+      niri
+      openssh
+      rclone
       ripgrep
       starship
+      udev-gothic
+      # vivaldi
+      # vivaldi-ffmpeg-codecs
+      wezterm
+      xwayland-satellite
+      zig
       # Language Servers
       clojure-lsp
       gopls
