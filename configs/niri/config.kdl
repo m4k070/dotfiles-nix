@@ -120,6 +120,8 @@ input {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
+    background-color "transparent"
+
     // Set gaps around windows in logical pixels.
     gaps 16
 
@@ -279,7 +281,8 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 // spawn-at-startup "waybar"
-spawn-at-startup "qs" "-c" "noctalia-shell"
+// spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-at-startup "noctalia-shell"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -319,11 +322,6 @@ animations {
 layer-rule {
   match namespace="^noctalia-wallpaper*"
   place-within-backdrop true
-}
-
-// Set transparent workspace background color so you see the backdrop at all times.
-layout {
-  background-color "transparent"
 }
 
 // Optionally, disable the workspace shadows in the overview.
