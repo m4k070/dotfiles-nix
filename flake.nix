@@ -14,42 +14,52 @@
       sirius = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-	  ./hosts/sirius/configuration.nix
-	  home-manager.nixosModules.default
-	  {
-	    home-manager = {
-	      useGlobalPkgs = true;
-	      useUserPackages = true;
-	      users.makoto = ./home/work.nix;
-	      backupFileExtension = ".backup";
-	    };
-	  }
-	];
+          ./hosts/sirius/configuration.nix
+            home-manager.nixosModules.default
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.makoto = ./home/work.nix;
+                backupFileExtension = ".backup";
+              };
+            }
+        ];
       };
       vega =  nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-	  ./hosts/vega/configuration.nix
-	  home-manager.nixosModules.default
-	  {
-	    home-manager = {
-	      useGlobalPkgs = true;
-	      useUserPackages = true;
-	      users.makoto = ./home/home.nix;
-	      backupFileExtension = ".backup";
-	    };
-	  }
-	];
+          ./hosts/vega/configuration.nix
+            home-manager.nixosModules.default
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.makoto = ./home/home.nix;
+                backupFileExtension = ".backup";
+              };
+            }
+        ];
       };
     };
     homeConfigurations = {
+      work = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
+        extraSpecialArgs = {
+          inherit inputs;
+        };
+        modules = [./home/work.nix];
+      };
       myHome = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";
-	  config.allowUnfree = true;
-	};
+          config.allowUnfree = true;
+        };
         extraSpecialArgs = {
-	  inherit inputs;
+          inherit inputs;
         };
         modules = [./home/home.nix];
       };
