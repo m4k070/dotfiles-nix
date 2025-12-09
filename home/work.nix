@@ -8,6 +8,7 @@
 
      home = {
        packages = with pkgs; [
+         mangowc
          teams-for-linux
        ];
      };

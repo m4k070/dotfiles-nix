@@ -7,9 +7,17 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixgl = {
+      url = "github:nix-community/nixgl";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, ... }@inputs: {
     nixosConfigurations = {
       sirius = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -49,7 +57,8 @@
           config.allowUnfree = true;
         };
         extraSpecialArgs = {
-          inherit inputs;
+          inherit nixgl;
+          inherit noctalia;
         };
         modules = [./home/work.nix];
       };
@@ -59,7 +68,8 @@
           config.allowUnfree = true;
         };
         extraSpecialArgs = {
-          inherit inputs;
+          inherit nixgl;
+          inherit noctalia;
         };
         modules = [./home/home.nix];
       };

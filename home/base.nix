@@ -1,14 +1,25 @@
-{inputs, pkgs, ...}:
+{config, pkgs, nixgl, noctalia, ...}:
 let
-inherit (import ./options.nix) username;
+  inherit (import ./options.nix) username;
 in {
+  # This code is required to enable nixGL
+  targets.genericLinux.nixGL.packages = import nixgl {
+    inherit pkgs;
+  };
+  targets.genericLinux.nixGL.defaultWrapper = "mesa";  # or whatever wrapper you need
+  targets.genericLinux.nixGL.installScripts = [ "mesa" ];
+
+  imports = [
+    noctalia.homeModules.default
+  ];
+
   home = {
     username = "${username}";
     homeDirectory = "/home/${username}";
     stateVersion = "25.11";
 
     packages = with pkgs; [
-      alacritty
+      (config.lib.nixGL.wrap alacritty)
       bat
       bitwarden-desktop
       blender
@@ -16,6 +27,7 @@ in {
       curl
       dbeaver-bin
       eza
+      firefox
       gimp
       git
       jq
@@ -31,8 +43,9 @@ in {
       udev-gothic
       # vivaldi
       # vivaldi-ffmpeg-codecs
-      wezterm
+      (config.lib.nixGL.wrap wezterm)
       xwayland-satellite
+      yq
       zig
       # Language Servers
       clojure-lsp
@@ -59,6 +72,9 @@ in {
   xdg.mime.enable = true;
 
   programs.home-manager.enable = true;
+  programs.noctalia-shell = {
+    enable = true;
+  };
   programs.vivaldi = {
     enable = true;
     commandLineArgs = [
