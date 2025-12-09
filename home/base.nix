@@ -37,6 +37,7 @@ in {
       mise
       niri
       openssh
+      quickshell
       rclone
       ripgrep
       starship
