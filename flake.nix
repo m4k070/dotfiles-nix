@@ -30,6 +30,10 @@
                 useUserPackages = true;
                 users.makoto = ./home/work.nix;
                 backupFileExtension = ".backup";
+                extraSpecialArgs = {
+                  inherit nixgl;
+                  inherit noctalia;
+                };
               };
             }
         ];
@@ -45,6 +49,10 @@
                 useUserPackages = true;
                 users.makoto = ./home/home.nix;
                 backupFileExtension = ".backup";
+                extraSpecialArgs = {
+                  inherit nixgl;
+                  inherit noctalia;
+                };
               };
             }
         ];
