@@ -28,16 +28,14 @@ in {
       dbeaver-bin
       eza
       firefox
+      (config.lib.nixGL.wrap ghostty)
       gimp
       git
       jq
       logseq
-      mako
-      mangowc
       mise
       niri
       openssh
-      quickshell
       rclone
       ripgrep
       starship

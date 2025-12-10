@@ -93,6 +93,11 @@
     layout = "us";
     variant = "";
   };
+  
+  security.pam.services = {
+    login.u2fAuth = true;
+    sudo.u2fAuth = true;
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
