@@ -9,6 +9,7 @@
      home = {
        packages = with pkgs; [
          mangowc
+         remmina
          teams-for-linux
        ];
      };
