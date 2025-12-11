@@ -12,7 +12,6 @@ in {
     stateVersion = "25.11";
 
     packages = with pkgs; [
-      (config.lib.nixGL.wrap alacritty)
       bat
       bitwarden-desktop
       blender
@@ -21,7 +20,6 @@ in {
       dbeaver-bin
       eza
       firefox
-      (config.lib.nixGL.wrap ghostty)
       gimp
       git
       jq
@@ -34,7 +32,6 @@ in {
       udev-gothic
       # vivaldi
       # vivaldi-ffmpeg-codecs
-      (config.lib.nixGL.wrap wezterm)
       xwayland-satellite
       yq
       zig
