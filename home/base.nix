@@ -2,13 +2,6 @@
 let
   inherit (import ./options.nix) username;
 in {
-  # This code is required to enable nixGL
-  targets.genericLinux.nixGL.packages = import nixgl {
-    inherit pkgs;
-  };
-  targets.genericLinux.nixGL.defaultWrapper = "mesa";  # or whatever wrapper you need
-  targets.genericLinux.nixGL.installScripts = [ "mesa" ];
-
   imports = [
     noctalia.homeModules.default
   ];
@@ -34,7 +27,6 @@ in {
       jq
       logseq
       mise
-      niri
       openssh
       rclone
       ripgrep
@@ -97,6 +89,7 @@ in {
     syntaxHighlighting.enable = true;
     shellAliases = {
       cat = "bat";
+      less = "bat --pager=less";
       ls = "eza --icons";
       vi = "nvim";
       vim = "nvim";
@@ -117,7 +110,6 @@ in {
     enable = true;
   };
   xdg.configFile."starship.toml".source = ../configs/starship/starship.toml;
-  xdg.configFile."mako/config".source = ../configs/mako/config.toml;
 
   xdg.configFile."nvim" = {
     source = ../configs/neovim;

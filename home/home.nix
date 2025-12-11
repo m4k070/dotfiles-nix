@@ -8,7 +8,10 @@
 
     home = {
       packages = with pkgs; [
-        blender
+        alacritty
+        ghostty
+        niri
+        wezterm
       ];
     };
     
