@@ -21,6 +21,7 @@ in {
       jq
       logseq
       mise
+      nb
       openssh
       rclone
       ripgrep
