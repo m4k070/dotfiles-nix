@@ -2,10 +2,6 @@
 let
   inherit (import ./options.nix) username;
 in {
-  imports = [
-    noctalia.homeModules.default
-  ];
-
   home = {
     username = "${username}";
     homeDirectory = "/home/${username}";
@@ -60,10 +56,7 @@ in {
   xdg.mime.enable = true;
 
   programs.home-manager.enable = true;
-  programs.noctalia-shell = {
-    enable = true;
-    systemd.enable = true;
-  };
+
   programs.vivaldi = {
     enable = true;
     commandLineArgs = [
