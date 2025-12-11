@@ -30,6 +30,7 @@ in {
       # vivaldi
       # vivaldi-ffmpeg-codecs
       xwayland-satellite
+      yazi
       yq
       zig
       # Language Servers
