@@ -25,7 +25,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     config = function()
       require("nvim-treesitter.configs").setup({
-        ensure_installed = { "go", "typescript", "json" },
+        ensure_installed = { "go", "typescript", "json", "clojure" },
         highlight = {
           enable = true,
         },
@@ -156,6 +156,7 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-nvim-lsp",
       "saadparwaiz1/cmp_luasnip",
+      'liquidz/elin-cmp-source',
     },
     config = function()
       require("cmp").setup({
@@ -167,6 +168,7 @@ return {
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "buffer" },
+          { name = "elin" },
         },
       })
     end,
@@ -248,6 +250,7 @@ return {
   -- ツリーファイラ
   {
     "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
@@ -376,4 +379,12 @@ return {
       }
     end,
   },
+
+  -- clojure
+  {
+    "liquidz/elin",
+  },
+
+  -- Better Quickfix
+  "kevinhwang91/nvim-bqf",
 }
