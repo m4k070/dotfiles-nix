@@ -83,6 +83,7 @@
   # Enable Desktop Environment.
   services.gnome.gnome-keyring.enable = true;
   services.displayManager.gdm.enable = true;
+  security.pam.services.gdm.enableGnomeKeyring = true;
   security.pam.services.gdm-password.enableGnomeKeyring = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
 
@@ -142,7 +143,9 @@
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+    mako
     niri
+    seahorse
   ];
 
   nixpkgs.config.allowUnfree = true;

@@ -1,4 +1,4 @@
-{config, pkgs, nixgl, noctalia, ...}:
+{config, pkgs, nixgl, ...}:
 let
   inherit (import ./options.nix) username;
 in {
@@ -47,11 +47,34 @@ in {
       vimPlugins.nvim-treesitter-parsers.typescript
       vimPlugins.nvim-treesitter-parsers.json
       vimPlugins.nvim-treesitter-parsers.clojure
+      # QT/KDE
+      kdePackages.qt6ct
+      libsForQt5.qt5ct
+      kdePackages.qtwayland
+      kdePackages.qtstyleplugin-kvantum
+      # kdePackages.breeze-icons
     ];
   };
 
   services = {
     gnome-keyring.enable = true;
+  };
+
+  gtk = {
+    enable = true;
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+    theme = {
+      name = "Tokyonight-Dark";
+      package = pkgs.tokyonight-gtk-theme;
+    };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "qtct";
   };
 
   xdg.enable = true;
@@ -107,6 +130,6 @@ in {
     source = ../configs/neovim;
     recursive = true;
   };
-
+  
   news.display = "silent";
 }
