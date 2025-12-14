@@ -86,6 +86,10 @@
   security.pam.services.gdm-password.enableGnomeKeyring = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
 
+  security.pam.u2f = {
+    enable = true;
+    settings.cue = true;
+  };
   security.pam.services = {
     login.u2fAuth = true;
     sudo.u2fAuth = true;
