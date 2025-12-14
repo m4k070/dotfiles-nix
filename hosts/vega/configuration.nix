@@ -18,11 +18,19 @@
   
   environment.systemPackages = with pkgs; [
     discord
-    #niri
+    heroic
     protonup-qt
+    sunshine
   ];
   
   services.xserver.videoDrivers = ["nvidia"];
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true; # only needed for Wayland -- omit this when using with Xorg
+    openFirewall = true;
+  };
+
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = false;
@@ -41,4 +49,6 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
+
+  programs.gamemode.enable = true;
 }

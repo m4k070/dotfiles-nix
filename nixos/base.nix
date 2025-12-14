@@ -80,20 +80,12 @@
     };
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # Enable Desktop Environment.
+  services.gnome.gnome-keyring.enable = true;
+  services.displayManager.gdm.enable = true;
+  security.pam.services.gdm-password.enableGnomeKeyring = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-  
   security.pam.services = {
     login.u2fAuth = true;
     sudo.u2fAuth = true;
@@ -121,13 +113,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
   
-  services.tailscale.enable = true;
-  networking.firewall = {
-    enable = true;
-    trustedInterfaces = ["tailscale0"];
-    allowedUDPPorts = [config.services.tailscale.port];
-  };
-
   xdg.portal.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -167,6 +152,13 @@
   # };
 
   # List services that you want to enable:
+
+  services.tailscale.enable = true;
+  networking.firewall = {
+    enable = true;
+    trustedInterfaces = ["tailscale0"];
+    allowedUDPPorts = [config.services.tailscale.port];
+  };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
