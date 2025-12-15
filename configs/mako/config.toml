@@ -9,7 +9,7 @@
 font=Terminus 12, Monospace 12
 
 # 背景: 非常に薄い半透明の背景（ほぼ透明）
-background-color=rgba(10, 10, 10, 0.1)
+background-color=#0A0A0AA8
 
 # テキスト色: 明るい白で視認性を確保
 text-color=#FFFFFF
@@ -21,7 +21,7 @@ border-size=1
 # 角丸: シャープなデザインのため、最小限に設定 (0推奨)
 default-timeout=5000
 # roundness=0
-roundness=3
+#roundness=3
 
 # 位置: 画面の右上に配置（モダンな標準配置）
 layer=overlay
@@ -48,7 +48,7 @@ format=<b>%s</b> %b
 # ==============================================================================
 [urgency=high]
 # 背景: わずかに不透明度を上げる
-background-color=rgba(30, 30, 30, 0.9)
+background-color=#1C1C1CD8
 # テキスト色: Nothingのアクセント色（明るい白または薄い赤）
 text-color=#FFFFFF
 # ボーダー色: 警告を強調するため、明るい赤に

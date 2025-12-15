@@ -11,6 +11,7 @@
         alacritty
         fuzzel
         ghostty
+        mako
         niri
         waybar
         wezterm
@@ -21,6 +22,8 @@
     programs.waybar = {
       enable = true;
     };
+
+    services.mako.enable = true;
     
     xdg.configFile."niri/config.kdl".source = ../configs/niri/config.kdl;
     xdg.configFile."waybar/config.jsonc".source = ../configs/waybar/config.jsonc;
