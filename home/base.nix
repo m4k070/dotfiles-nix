@@ -1,4 +1,4 @@
-{config, pkgs, nixgl, ...}:
+{config, pkgs, nixgl, lib, ...}:
 let
   inherit (import ./options.nix) username;
 in {
@@ -28,7 +28,7 @@ in {
       starship
       udev-gothic
       # vivaldi
-      # vivaldi-ffmpeg-codecs
+      vivaldi-ffmpeg-codecs
       xwayland-satellite
       yazi
       yq
@@ -111,6 +111,7 @@ in {
     };
     history.size = 10000;
     history.ignoreAllDups = true;
+    initContent = lib.mkAfter "eval \"$(mise activate zsh)\"";
   };
   programs.git = {
     enable = true;
