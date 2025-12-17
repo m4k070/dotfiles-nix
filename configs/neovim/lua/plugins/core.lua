@@ -25,7 +25,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     config = function()
       require("nvim-treesitter.configs").setup({
-        ensure_installed = { "go", "typescript", "json", "clojure" },
+        ensure_installed = { "go", "typescript", "json", "clojure", "fsharp", "lua" },
         highlight = {
           enable = true,
         },

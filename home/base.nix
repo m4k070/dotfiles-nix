@@ -42,6 +42,7 @@ in {
       typescript-language-server
       yaml-language-server
       # vim plugins
+      vimPlugins.nvim-treesitter-parsers.fsharp
       vimPlugins.nvim-treesitter-parsers.go
       vimPlugins.nvim-treesitter-parsers.typescript
       vimPlugins.nvim-treesitter-parsers.json

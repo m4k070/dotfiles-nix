@@ -16,10 +16,20 @@
     home = {
       packages = with pkgs; [
         (config.lib.nixGL.wrap alacritty)
-        (config.lib.nixGL.wrap ghostty)
         (config.lib.nixGL.wrap wezterm)
         remmina
         teams-for-linux
       ];
+    };
+
+    programs.ghostty = {
+      enable = true;
+      package = config.lib.nixGL.wrap pkgs.ghostty;
+      enableZshIntegration = true;
+      settings = {
+        fontSize = 12;
+        font-family = "UDEV Gothic";
+        theme = "Kanagawa Wave";
+      };
     };
   }

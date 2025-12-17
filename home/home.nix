@@ -23,6 +23,16 @@
       enable = true;
     };
 
+    programs.ghostty = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        fontSize = 12;
+        font-family = "UDEV Gothic";
+        theme = "Kanagawa Wave";
+      };
+    };
+
     services.mako.enable = true;
     
     xdg.configFile."niri/config.kdl".source = ../configs/niri/config.kdl;
