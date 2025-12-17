@@ -22,7 +22,6 @@ in {
       logseq
       mise
       nb
-      openssh
       rclone
       ripgrep
       starship
@@ -125,6 +124,7 @@ in {
   programs.starship = {
     enable = true;
   };
+
   xdg.configFile."starship.toml".source = ../configs/starship/starship.toml;
 
   xdg.configFile."nvim" = {
