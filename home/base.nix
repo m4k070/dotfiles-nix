@@ -1,4 +1,4 @@
-{config, pkgs, nixgl, lib, ...}:
+{config, pkgs, nixgl, lib, noctalia, ...}:
 let
   inherit (import ./options.nix) username;
 in {

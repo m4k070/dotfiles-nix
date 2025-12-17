@@ -24,7 +24,7 @@ return {
     -- シンタックスハイライト
     "nvim-treesitter/nvim-treesitter",
     config = function()
-      require("nvim-treesitter.configs").setup({
+      require("nvim-treesitter").setup({
         ensure_installed = { "go", "typescript", "json", "clojure", "fsharp", "lua" },
         highlight = {
           enable = true,
@@ -36,7 +36,7 @@ return {
     -- インデント
     "yioneko/nvim-yati",
     config = function()
-      require("nvim-treesitter.configs").setup{
+      require("nvim-treesitter").setup{
         yati = {
           enable = true,
           disable = {"go"},
@@ -239,7 +239,7 @@ return {
   {
     "andymass/vim-matchup",
     config = function()
-      require("nvim-treesitter.configs").setup{
+      require("nvim-treesitter").setup{
         matchup = {
           enable = true,
         },
