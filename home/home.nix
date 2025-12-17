@@ -27,51 +27,6 @@
     
     programs.noctalia-shell = {
       enable = true;
-      settings = {
-        bar = {
-          widgets = {
-            left = [
-              {
-                id = "CustomButton";
-                leftClickExec = "noctalia-shell ipc call launcher toggle";
-                leftClickUpdateText = false;
-                icon = "rocket";
-                hideMode = "alwaysExpanded";
-                maxTextLength = {
-                    horizontal = 10;
-                    vertical = 10;
-                };
-                middleClickExec = "";
-                middleClickUpdateText = false;
-                parseJson = false;
-                rightClickExec = "";
-                rightClickUpdateText = false;
-                showIcon = true;
-                textCollapse = "";
-                textCommand = "";
-                textIntervalMs = 3000;
-                textStream = false;
-                wheelDownExec = "";
-                wheelDownUpdateText = false;
-                wheelExec = "";
-                wheelMode = "unified";
-                wheelUpExec = "";
-                wheelUpUpdateText = false;
-                wheelUpdateText = false;
-              }
-              {
-                id = "ActiveWindow";
-                colorizeIcons = false;
-                hideMode = "hidden";
-                maxWidth = 145;
-                scrollingMode = "hover";
-                showIcon = true;
-                useFixedWidth = false;
-              }
-            ];
-          };
-        };
-      };
     };
 
     programs.ghostty = {
