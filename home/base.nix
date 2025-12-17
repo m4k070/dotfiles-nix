@@ -22,7 +22,6 @@ in {
       logseq
       mise
       nb
-      openssh
       rclone
       ripgrep
       starship
@@ -43,6 +42,7 @@ in {
       typescript-language-server
       yaml-language-server
       # vim plugins
+      vimPlugins.nvim-treesitter-parsers.fsharp
       vimPlugins.nvim-treesitter-parsers.go
       vimPlugins.nvim-treesitter-parsers.typescript
       vimPlugins.nvim-treesitter-parsers.json
@@ -125,6 +125,7 @@ in {
   programs.starship = {
     enable = true;
   };
+
   xdg.configFile."starship.toml".source = ../configs/starship/starship.toml;
 
   xdg.configFile."nvim" = {
