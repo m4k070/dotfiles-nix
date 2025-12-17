@@ -32,23 +32,6 @@ return {
       })
     end,
   },
-  {
-    -- インデント
-    "yioneko/nvim-yati",
-    config = function()
-      require("nvim-treesitter").setup{
-        yati = {
-          enable = true,
-          disable = {"go"},
-          default_lazy = true,
-          deault_fallback = "auto",
-        },
-        indent = {
-          enable = false,
-        },
-      }
-    end,
-  },
 
   -- カッコに対応する文を仮想テキストに表示
   --"haringsrob/nvim_context_vt",
