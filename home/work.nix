@@ -27,7 +27,7 @@
       package = config.lib.nixGL.wrap pkgs.ghostty;
       enableZshIntegration = true;
       settings = {
-        fontSize = 12;
+        font-size = 14;
         font-family = "UDEV Gothic";
         theme = "Kanagawa Wave";
       };

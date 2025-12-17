@@ -27,7 +27,7 @@
       enable = true;
       enableZshIntegration = true;
       settings = {
-        fontSize = 12;
+        font-size = 18;
         font-family = "UDEV Gothic";
         theme = "Kanagawa Wave";
       };
