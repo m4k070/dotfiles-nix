@@ -27,6 +27,7 @@
     
     programs.noctalia-shell = {
       enable = true;
+      systemd.enable = true;
     };
 
     programs.ghostty = {
@@ -35,7 +36,7 @@
       settings = {
         font-size = 16;
         font-family = "UDEV Gothic";
-        theme = "Kanagawa Wave";
+        theme = "noctalia";
       };
     };
 

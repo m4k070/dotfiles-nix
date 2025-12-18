@@ -16,10 +16,10 @@
   networking.hostName = "vega"; # Define your hostname.
   
   environment.systemPackages = with pkgs; [
-    discord
     heroic
     protonup-qt
     sunshine
+    vesktop
   ];
   
   services.xserver.videoDrivers = ["nvidia"];
