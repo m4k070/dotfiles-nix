@@ -20,7 +20,6 @@ in {
       fzf
       gimp
       git
-      joplin-desktop
       jq
       logseq
       mise
