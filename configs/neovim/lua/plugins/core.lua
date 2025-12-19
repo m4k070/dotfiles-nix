@@ -25,7 +25,17 @@ return {
     "nvim-treesitter/nvim-treesitter",
     config = function()
       require("nvim-treesitter").setup({
-        ensure_installed = { "go", "typescript", "json", "clojure", "fsharp", "lua" },
+        ensure_installed = {
+          "clojure",
+          "fsharp",
+          "go",
+          "javascript",
+          "json",
+          "lua",
+          "svelte",
+          "tsx",
+          "typescript",
+        },
         highlight = {
           enable = true,
         },
@@ -182,6 +192,7 @@ return {
         { noremap = true, silent = true })
     end,
   },
+  "ionide/ionide-vim",
 
   {
     -- フォーマッタ
