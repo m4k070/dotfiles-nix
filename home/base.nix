@@ -19,6 +19,7 @@ in {
       firefox
       fzf
       gimp
+      gh
       git
       jq
       logseq
