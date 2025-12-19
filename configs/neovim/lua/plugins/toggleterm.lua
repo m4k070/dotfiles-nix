@@ -12,7 +12,7 @@ return {
             return vim.o.columns * 0.4
           end
         end,
-        open_mapping = [[<C-\>]],
+        open_mapping = [[<C-`>]],
         direction = "float",
       })
     end,

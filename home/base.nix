@@ -14,8 +14,10 @@ in {
       btop 
       curl
       dbeaver-bin
+      dotnet-sdk
       eza
       firefox
+      fzf
       gimp
       git
       jq
@@ -34,7 +36,9 @@ in {
       zig
       # Language Servers
       clojure-lsp
+      fsautocomplete
       gopls
+      lua-language-server
       marksman
       postgres-language-server
       rust-analyzer
@@ -42,11 +46,13 @@ in {
       typescript-language-server
       yaml-language-server
       # vim plugins
+      vimPlugins.Ionide-vim
+      vimPlugins.nvim-treesitter-parsers.clojure
       vimPlugins.nvim-treesitter-parsers.fsharp
       vimPlugins.nvim-treesitter-parsers.go
-      vimPlugins.nvim-treesitter-parsers.typescript
       vimPlugins.nvim-treesitter-parsers.json
-      vimPlugins.nvim-treesitter-parsers.clojure
+      vimPlugins.nvim-treesitter-parsers.lua
+      vimPlugins.nvim-treesitter-parsers.typescript
       # QT/KDE
       kdePackages.qt6ct
       libsForQt5.qt5ct
@@ -82,6 +88,10 @@ in {
 
   programs.home-manager.enable = true;
 
+  programs.eza = {
+    enable = true;
+    enableZshIntegration = true;
+  };
   programs.vivaldi = {
     enable = true;
     commandLineArgs = [
@@ -111,7 +121,10 @@ in {
     };
     history.size = 10000;
     history.ignoreAllDups = true;
-    initContent = lib.mkAfter "eval \"$(mise activate zsh)\"";
+    initContent = lib.mkAfter ''
+      eval "$(mise activate zsh)"
+      export PATH="$HOME/go/bin:$PATH"
+    '';
   };
   programs.git = {
     enable = true;

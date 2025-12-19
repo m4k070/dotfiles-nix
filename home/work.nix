@@ -20,6 +20,9 @@
         remmina
         teams-for-linux
       ];
+      sessionPath = [
+        "~/go/bin"
+      ];
     };
 
     programs.ghostty = {
@@ -29,7 +32,19 @@
       settings = {
         font-size = 14;
         font-family = "UDEV Gothic";
-        theme = "Kanagawa Wave";
+        theme = "noctalia";
+      };
+    };
+
+    programs.go = {
+      enable = true;
+      env = {
+        GOPATH = [
+          "${config.home.homeDirectory}/go"
+        ];
+        GOPRIVATE = [
+          "github.com/tsukasa-ind/"
+        ];
       };
     };
   }
