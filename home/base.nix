@@ -145,6 +145,8 @@ in {
     source = ../configs/neovim;
     recursive = true;
   };
+
+  xdg.configFile."yazi/theme.toml".source = ../configs/yazi/theme.toml;
   
   news.display = "silent";
 }
