@@ -36,6 +36,12 @@
       };
     };
 
+    programs.git = {
+      enable = true;
+      settings.user.name = "Makoto Ito";
+      settings.user.email = "makoto.ito@tsukasa-ind.co.jp";
+    };
+
     programs.go = {
       enable = true;
       env = {

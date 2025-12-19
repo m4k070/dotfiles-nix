@@ -126,15 +126,19 @@ in {
       export PATH="$HOME/go/bin:$PATH"
     '';
   };
+
+  programs.gh = {
+    enable = true;
+    extensions = with pkgs; [gh-markdown-preview];
+    gitCredentialHelper.enable = true;
+  };
+
   programs.git = {
     enable = true;
     settings.user.name = "Makoto Ito";
     settings.user.email = "m4k070@pm.me";
   };
-  programs.gh = {
-    enable = true;
-    extensions = with pkgs; [gh-markdown-preview];
-  };
+
   programs.starship = {
     enable = true;
   };
