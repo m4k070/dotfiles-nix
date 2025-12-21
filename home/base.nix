@@ -14,7 +14,7 @@ in {
       btop 
       curl
       dbeaver-bin
-      dotnet-sdk
+      dotnet-sdk_10
       eza
       firefox
       fzf
@@ -137,7 +137,7 @@ in {
   programs.git = {
     enable = true;
     settings.user.name = "Makoto Ito";
-    settings.user.email = "m4k070@pm.me";
+    settings.user.email = lib.mkDefault "m4k070@pm.me";
   };
 
   programs.starship = {
