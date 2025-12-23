@@ -27,8 +27,10 @@ return {
       require("nvim-treesitter").setup({
         ensure_installed = {
           "clojure",
+          "css",
           "fsharp",
           "go",
+          "html",
           "javascript",
           "json",
           "lua",

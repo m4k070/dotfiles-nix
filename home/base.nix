@@ -49,8 +49,10 @@ in {
       # vim plugins
       vimPlugins.Ionide-vim
       vimPlugins.nvim-treesitter-parsers.clojure
+      vimPlugins.nvim-treesitter-parsers.css
       vimPlugins.nvim-treesitter-parsers.fsharp
       vimPlugins.nvim-treesitter-parsers.go
+      vimPlugins.nvim-treesitter-parsers.html
       vimPlugins.nvim-treesitter-parsers.json
       vimPlugins.nvim-treesitter-parsers.lua
       vimPlugins.nvim-treesitter-parsers.typescript
