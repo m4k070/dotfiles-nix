@@ -58,6 +58,7 @@
     fcitx5.waylandFrontend = true;
   };
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.QT_QPA_PLATFORMTHEME = "gtk3";
 
   fonts = {
     packages = with pkgs; [
