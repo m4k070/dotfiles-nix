@@ -148,14 +148,20 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
     #mako
+    ffmpeg-headless
+    ffmpegthumbnailer
+    gdk-pixbuf
     gh
     git
     kanagawa-gtk-theme
     kanagawa-icon-theme
+    libheif
+    libheif.out
     nautilus
     niri
     nwg-look
     openssh
+    papirus-icon-theme
   ];
 
   nixpkgs.config.allowUnfree = true;
