@@ -96,6 +96,8 @@
     sudo.u2fAuth = true;
   };
 
+  services.udisks2.enable = true;
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -150,6 +152,7 @@
     git
     kanagawa-gtk-theme
     kanagawa-icon-theme
+    nautilus
     niri
     nwg-look
     openssh
