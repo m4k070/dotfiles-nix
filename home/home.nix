@@ -20,7 +20,7 @@
         wlogout
       ];
     };
-    
+
     # programs.waybar = {
     #   enable = true;
     # };
@@ -38,6 +38,12 @@
         font-family = "UDEV Gothic";
         theme = "noctalia";
       };
+    };
+
+    programs.git = {
+      enable = true;
+      settings.user.name = "Makoto Ito";
+      settings.user.email = "m4k070@pm.me";
     };
 
     #services.mako.enable = true;

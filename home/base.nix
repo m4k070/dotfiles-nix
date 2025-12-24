@@ -56,12 +56,6 @@ in {
       vimPlugins.nvim-treesitter-parsers.json
       vimPlugins.nvim-treesitter-parsers.lua
       vimPlugins.nvim-treesitter-parsers.typescript
-      # QT/KDE
-      kdePackages.qt6ct
-      libsForQt5.qt5ct
-      kdePackages.qtwayland
-      kdePackages.qtstyleplugin-kvantum
-      # kdePackages.breeze-icons
     ];
   };
 
@@ -99,10 +93,17 @@ in {
 
   programs.home-manager.enable = true;
 
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   programs.eza = {
     enable = true;
     enableZshIntegration = true;
   };
+
   programs.vivaldi = {
     enable = true;
     commandLineArgs = [
@@ -111,12 +112,14 @@ in {
         "--enable-wayland-ime"
     ];
   };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
   };
+
   programs.zsh = {
     enable = true;
     autocd = true;
