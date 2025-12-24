@@ -189,6 +189,7 @@ return {
       vim.lsp.enable("gopls")
       vim.lsp.enable("clojure")
 
+      vim.keymap.set("n", "<F2>", "<cmd>:lua vim.lsp.buf.rename()<CR>")
       vim.keymap.set("n", "<F12>", "<cmd>:lua vim.lsp.buf.definition()<CR>")
       vim.keymap.set("n", "<leader>e", "<cmd>:lua vim.diagnostic.open_float()<CR>",
         { noremap = true, silent = true })
