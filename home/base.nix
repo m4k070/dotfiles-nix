@@ -85,7 +85,6 @@ in {
 
   qt = {
     enable = true;
-    platformTheme.name = "qtct";
   };
 
   xdg.enable = true;
