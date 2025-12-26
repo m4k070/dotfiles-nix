@@ -7,6 +7,10 @@ in {
     homeDirectory = "/home/${username}";
     stateVersion = "25.11";
 
+    sessionVariables = {
+      "QT_QPA_PLATFORMTHEME" = "gtk3";
+    };
+
     packages = with pkgs; [
       bat
       bitwarden-desktop
