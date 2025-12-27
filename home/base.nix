@@ -144,6 +144,11 @@ in {
     '';
   };
 
+  programs.sheldon = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   programs.gh = {
     enable = true;
     extensions = with pkgs; [gh-markdown-preview];
