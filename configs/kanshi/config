@@ -1,0 +1,18 @@
+output "AU Optronics 0xFA9B Unknown" {
+  mode 1920x1200@60.026
+  scale 1.25
+  position 1920,0
+  alias $INTERNAL
+}
+
+output "Iiyama North America PL2492H 1225743345887" {
+  mode 1920x1080@100.000
+  scale 1
+  position 0,0
+  alias $WORK_RIGHT
+}
+
+profile docked {
+  output $INTERNAL enable
+  output $WORK_RIGHT enable
+}
