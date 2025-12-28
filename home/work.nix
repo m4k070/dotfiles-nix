@@ -32,7 +32,7 @@
       settings = {
         font-size = 14;
         font-family = "UDEV Gothic";
-        theme = "noctalia";
+        #theme = "noctalia";
       };
     };
 

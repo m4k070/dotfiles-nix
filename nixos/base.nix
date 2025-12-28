@@ -141,6 +141,10 @@
     enable = true;
   };
 
+  programs.niri = {
+    enable = true;
+  };
+
   programs.seahorse.enable = true;
 
   # List packages installed in system profile. To search, run:
@@ -159,7 +163,6 @@
     libheif
     libheif.out
     nautilus
-    niri
     nwg-look
     openssh
     papirus-icon-theme

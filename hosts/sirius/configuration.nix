@@ -13,6 +13,8 @@
     ];
 
   networking.hostName = "sirius"; # Define your hostname.
-  services.qemuGuest.enable = true;
-  services.spice-vdagentd.enable = true;
+
+  programs.niri = {
+    enable = true;
+  };
 }

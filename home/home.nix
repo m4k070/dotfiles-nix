@@ -4,7 +4,6 @@
   in {
     imports = [
       ./base.nix
-      noctalia.homeModules.default
     ];
 
     home = {
@@ -13,7 +12,6 @@
         fuzzel
         ghostty
         #mako
-        niri
         #swaybg
         #waybar
         wezterm
@@ -25,18 +23,13 @@
     #   enable = true;
     # };
     
-    programs.noctalia-shell = {
-      enable = true;
-      systemd.enable = true;
-    };
-
     programs.ghostty = {
       enable = true;
       enableZshIntegration = true;
       settings = {
         font-size = 16;
         font-family = "UDEV Gothic";
-        theme = "noctalia";
+        #theme = "noctalia";
       };
     };
 
@@ -48,7 +41,6 @@
 
     #services.mako.enable = true;
     
-    xdg.configFile."niri/config.kdl".source = ../configs/niri/config.kdl;
     xdg.configFile."waybar/config.jsonc".source = ../configs/waybar/config.jsonc;
     xdg.configFile."waybar/style.css".source = ../configs/waybar/style.css;
     #xdg.configFile."mako/config".source = ../configs/mako/config.toml;

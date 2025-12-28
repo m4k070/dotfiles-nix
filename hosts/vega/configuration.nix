@@ -39,10 +39,6 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
   
-  programs.niri = {
-    enable = true;
-  };
-
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;

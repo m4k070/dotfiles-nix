@@ -2,6 +2,10 @@
 let
   inherit (import ./options.nix) username;
 in {
+  imports = [
+    noctalia.homeModules.default
+  ];
+
   home = {
     username = "${username}";
     homeDirectory = "/home/${username}";
@@ -29,6 +33,7 @@ in {
       logseq
       mise
       nb
+      niri
       rclone
       ripgrep
       starship
@@ -116,6 +121,11 @@ in {
     ];
   };
 
+  programs.noctalia-shell = {
+    enable = true;
+    systemd.enable = true;
+  };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -200,6 +210,7 @@ in {
     '';
   };
 
+  xdg.configFile."niri/config.kdl".source = ../configs/niri/config.kdl;
   xdg.configFile."starship.toml".source = ../configs/starship/starship.toml;
 
   xdg.configFile."nvim" = {
