@@ -25,6 +25,7 @@ in {
       dotnet-sdk_10
       eza
       firefox
+      fuzzel
       fzf
       gimp
       gh

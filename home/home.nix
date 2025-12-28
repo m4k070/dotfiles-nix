@@ -9,7 +9,6 @@
     home = {
       packages = with pkgs; [
         alacritty
-        fuzzel
         ghostty
         #mako
         #swaybg
