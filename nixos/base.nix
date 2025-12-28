@@ -97,6 +97,12 @@
     sudo.u2fAuth = true;
   };
 
+  # NTP
+  services.chrony = {
+    enable = true;
+    servers = ["ntp.nict.jp"];
+  };
+
   services.udisks2.enable = true;
 
   # Enable CUPS to print documents.
