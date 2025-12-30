@@ -407,10 +407,10 @@ window-rule {
     clip-to-geometry true
 }
 
-// Games
+// FullScreen Games
 /-window-rule {
     match app-id="steam_app_3513350"
-    default-column-width { proportion 1.0; }
+    open-fullscreen true
 }
 
 binds {

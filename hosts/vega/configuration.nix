@@ -19,7 +19,6 @@
     heroic
     protonup-qt
     sunshine
-    vesktop
   ];
   
   services.xserver.videoDrivers = ["nvidia"];

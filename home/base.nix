@@ -142,6 +142,7 @@ in {
     syntaxHighlighting.enable = true;
     shellAliases = {
       cat = "bat";
+      cd = "z";
       less = "bat --pager=less";
       ls = "eza --icons";
       vi = "nvim";
@@ -153,6 +154,11 @@ in {
       eval "$(mise activate zsh)"
       export PATH="$HOME/go/bin:$PATH"
     '';
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   programs.sheldon = {
