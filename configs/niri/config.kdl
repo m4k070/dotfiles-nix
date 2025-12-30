@@ -348,9 +348,17 @@ overview {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Window-Rules
 
+// In-Active Window is transparenty display.
 window-rule {
     match is-active=false
     opacity 0.95
+}
+
+// Browser default column width.
+window-rule {
+    match app-id="firefox"
+    match app-id="vivaldi-stable"
+    default-column-width { proportion 0.66667; }
 }
 
 // Work around WezTerm's initial configure bug
@@ -397,6 +405,12 @@ window-rule {
 window-rule {
     geometry-corner-radius 8
     clip-to-geometry true
+}
+
+// Games
+/-window-rule {
+    match app-id="steam_app_3513350"
+    default-column-width { proportion 1.0; }
 }
 
 binds {
