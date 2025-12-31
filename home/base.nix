@@ -106,7 +106,6 @@ in {
             {
               criteria = "$INTERNAL";
               position = "1920,0";
-              scale = 1.25;
             }
             {
               criteria = "$OFFICE";
