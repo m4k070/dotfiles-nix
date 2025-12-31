@@ -79,6 +79,51 @@ in {
         };
       };
     };
+    kanshi = {
+      enable = true;
+      settings = [
+        {
+          output.criteria = "AU Optronics 0xFA9B Unknown";
+          output.scale = 1.25;
+          output.mode = "1920x1200@60.026";
+          output.alias = "INTERNAL";
+        }
+        {
+          output.criteria = "Iiyama North America PL2492H 1225743345887";
+          output.scale = 1.0;
+          output.mode = "1920x1080@100.000";
+          output.alias = "OFFICE";
+        }
+        {
+          output.criteria = "ASUSTek COMPUTER INC PA278QV MALMQS119530";
+          output.scale = 1.0;
+          output.mode = "2560x1440@59.951";
+          output.alias = "HOME";
+        }
+        {
+          profile.name = "docked";
+          profile.outputs = [
+            {
+              criteria = "$INTERNAL";
+              position = "1920,0";
+              scale = 1.25;
+            }
+            {
+              criteria = "$OFFICE";
+              position = "0,0";
+            }
+          ];
+        }
+        {
+          profile.name = "home";
+          profile.outputs = [
+            {
+              criteria = "$HOME";
+            } 
+          ];
+        }
+      ];
+    };
   };
 
   gtk = {
