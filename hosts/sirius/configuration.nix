@@ -14,6 +14,13 @@
 
   networking.hostName = "sirius"; # Define your hostname.
 
+  powerManagement.enable = true;
+  services.logind.settings.Login = {
+    HandleLidSwitch = "poweroff";
+    HandleLidSwitchExternalPower = "lock";
+    HandleLidSwitchDocked = "ignore";
+  };
+
   programs.niri = {
     enable = true;
   };
