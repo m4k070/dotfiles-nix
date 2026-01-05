@@ -101,6 +101,12 @@ in {
           output.alias = "HOME";
         }
         {
+          output.criteria = "HP Inc. HP Z24n G2 6CM9490RTY";
+          output.scale = 1.0;
+          output.mode = "1920x1200@59.950";
+          output.alias = "OFFICE2";
+        }
+        {
           profile.name = "docked";
           profile.outputs = [
             {
@@ -109,6 +115,19 @@ in {
             }
             {
               criteria = "$OFFICE";
+              position = "0,0";
+            }
+          ];
+        }
+        {
+          profile.name = "office2";
+          profile.outputs = [
+            {
+              criteria = "$INTERNAL";
+              position = "1920,0";
+            }
+            {
+              criteria = "$OFFICE2";
               position = "0,0";
             }
           ];

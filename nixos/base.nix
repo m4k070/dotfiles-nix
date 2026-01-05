@@ -169,6 +169,7 @@
     libheif
     libheif.out
     nautilus
+    networkmanagerapplet
     nwg-look
     openssh
     papirus-icon-theme

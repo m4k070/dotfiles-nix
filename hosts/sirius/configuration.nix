@@ -16,9 +16,13 @@
 
   powerManagement.enable = true;
   services.logind.settings.Login = {
-    HandleLidSwitch = "poweroff";
+    HandleLidSwitch = "suspend";
     HandleLidSwitchExternalPower = "lock";
     HandleLidSwitchDocked = "ignore";
+  };
+
+  services.upower = {
+    enable = true;
   };
 
   programs.niri = {
