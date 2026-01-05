@@ -20,6 +20,7 @@ in {
       bitwarden-desktop
       blender
       btop 
+      cmake
       curl
       dbeaver-bin
       dotnet-sdk_10
@@ -27,9 +28,13 @@ in {
       firefox
       fuzzel
       fzf
-      gimp
+      gcc
+      gdb
+      gnumake
       gh
+      gimp
       git
+      go-task
       jq
       logseq
       mise
