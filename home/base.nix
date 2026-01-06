@@ -43,6 +43,7 @@ in {
       rclone
       ripgrep
       starship
+      thorium-reader
       udev-gothic
       # vivaldi
       vivaldi-ffmpeg-codecs
@@ -94,7 +95,8 @@ in {
           output.alias = "INTERNAL";
         }
         {
-          output.criteria = "Iiyama North America PL2492H 1225743345887";
+          # output.criteria = "Iiyama North America PL2492H 1225743345887";
+          output.criteria = "Iiyama North America PL2492H 1225743345900";
           output.scale = 1.0;
           output.mode = "1920x1080@100.000";
           output.alias = "OFFICE";

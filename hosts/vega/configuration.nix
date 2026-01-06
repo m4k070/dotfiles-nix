@@ -11,8 +11,6 @@
       ./hardware-configuration.nix
     ];
 
-  hardware.bluetooth.enable = true;
-
   networking.hostName = "vega"; # Define your hostname.
   
   environment.systemPackages = with pkgs; [

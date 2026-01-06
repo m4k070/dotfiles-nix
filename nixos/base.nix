@@ -103,7 +103,12 @@
     servers = ["ntp.nict.jp"];
   };
 
+  # removal disk
   services.udisks2.enable = true;
+
+  # bluetooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

@@ -14,8 +14,6 @@
 
   networking.hostName = "sirius"; # Define your hostname.
 
-  hardware.bluetooth.enable = true;
-
   powerManagement.enable = true;
   services.logind.settings.Login = {
     HandleLidSwitch = "suspend";

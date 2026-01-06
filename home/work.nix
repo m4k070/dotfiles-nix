@@ -19,6 +19,7 @@
         (config.lib.nixGL.wrap wezterm)
         remmina
         teams-for-linux
+        zoom-us
       ];
       sessionPath = [
         "~/go/bin"
