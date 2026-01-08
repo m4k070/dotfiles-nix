@@ -15,9 +15,10 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-hazkey.url = "github:aster-void/nix-hazkey";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, nix-hazkey, ... }@inputs: {
     nixosConfigurations = {
       sirius = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -33,6 +34,7 @@
                 extraSpecialArgs = {
                   inherit nixgl;
                   inherit noctalia;
+                  inherit nix-hazkey;
                 };
               };
             }
@@ -52,6 +54,7 @@
                 extraSpecialArgs = {
                   inherit nixgl;
                   inherit noctalia;
+                  inherit nix-hazkey;
                 };
               };
             }
@@ -67,6 +70,7 @@
         extraSpecialArgs = {
           inherit nixgl;
           inherit noctalia;
+          inherit nix-hazkey;
         };
         modules = [./home/work.nix];
       };
@@ -78,6 +82,7 @@
         extraSpecialArgs = {
           inherit nixgl;
           inherit noctalia;
+          inherit nix-hazkey;
         };
         modules = [./home/home.nix];
       };

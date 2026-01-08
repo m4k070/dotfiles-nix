@@ -5,12 +5,6 @@
 { config, pkgs, ... }:
 
 {
-  # imports =
-  #   [ # Include the results of the hardware scan.
-  #     #./hardware-configuration.nix
-  #     /etc/nixos/hardware-configuration.nix
-  #   ];
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -48,18 +42,13 @@
     LC_TIME = "ja_JP.UTF-8";
   };
 
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5.addons = with pkgs; [
-      fcitx5-mozc
-      fcitx5-gtk
-    ];
-    fcitx5.waylandFrontend = true;
-  };
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  environment.sessionVariables.QT_QPA_PLATFORMTHEME = "gtk3";
-
+  # i18n.inputMethod = {
+  #   enable = true;
+  #   type = "fcitx5";
+  #   fcitx5.waylandFrontend = true;
+  # };
+  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
+ 
   fonts = {
     packages = with pkgs; [
       noto-fonts-cjk-serif

@@ -1,9 +1,10 @@
-{config, pkgs, nixgl, lib, noctalia, ...}:
+{config, pkgs, nixgl, lib, noctalia, nix-hazkey, ...}:
 let
   inherit (import ./options.nix) username;
 in {
   imports = [
     noctalia.homeModules.default
+    nix-hazkey.homeModules.hazkey
   ];
 
   home = {
@@ -14,6 +15,7 @@ in {
     sessionVariables = {
       "QT_QPA_PLATFORMTHEME" = "gtk3";
       "SSH_AUTH_SOCK" = "~/.bitwarden-ssh-agent.sock";
+      "NIXOS_OZONE_WL" = "1";
     };
 
     packages = with pkgs; [
@@ -76,8 +78,17 @@ in {
     ];
   };
 
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.waylandFrontend = true;
+  };
+
   services = {
+    hazkey.enable = true;
+
     gnome-keyring.enable = true;
+
     udiskie = {
       enable = true;
       settings = {
@@ -86,6 +97,7 @@ in {
         };
       };
     };
+
     kanshi = {
       enable = true;
       settings = [
