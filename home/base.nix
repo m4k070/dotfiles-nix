@@ -13,6 +13,7 @@ in {
 
     sessionVariables = {
       "QT_QPA_PLATFORMTHEME" = "gtk3";
+      "SSH_AUTH_SOCK" = "~/.bitwarden-ssh-agent.sock";
     };
 
     packages = with pkgs; [
