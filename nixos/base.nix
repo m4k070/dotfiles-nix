@@ -90,7 +90,7 @@
       ENV{ID_MODEL_ID}=="0407",\
       ENV{ID_VENDOR_ID}=="1050",\
       RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
-      ATTRS{idVendor}=="4653",ATTRS{idModel}=="0004",ENV{ID_INPUT_JOYSTICK}=""
+      SUBSYSTEM=="input",ATTRS{idVendor}=="4653",ATTRS{idProduct}=="0004",ENV{ID_INPUT_JOYSTICK}="0"
   '';
 
   # NTP
@@ -174,6 +174,8 @@
     nwg-look
     openssh
     papirus-icon-theme
+    pavucontrol
+    usbutils
   ];
 
   nixpkgs.config.allowUnfree = true;
