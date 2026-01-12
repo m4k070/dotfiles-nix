@@ -90,6 +90,7 @@
       ENV{ID_MODEL_ID}=="0407",\
       ENV{ID_VENDOR_ID}=="1050",\
       RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
+      ATTRS{idVendor}=="4653",ATTRS{idModel}=="0004",ENV{ID_INPUT_JOYSTICK}=""
   '';
 
   # NTP
