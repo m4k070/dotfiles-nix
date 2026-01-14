@@ -196,6 +196,11 @@ in {
     enableZshIntegration = true;
   };
 
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   programs.vivaldi = {
     enable = true;
     commandLineArgs = [
