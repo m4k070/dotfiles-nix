@@ -135,7 +135,11 @@ return {
     -- 右下通知
     "j-hui/fidget.nvim",
     config = function()
-      require("fidget").setup{}
+      require("fidget").setup{
+        display = {
+          render_limit = 3,
+        }
+      }
     end,
   },
   --------
