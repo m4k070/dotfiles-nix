@@ -79,6 +79,7 @@ return {
   {
     -- ステータスバー
     "nvim-lualine/lualine.nvim",
+    enabled = not vim.g.vscode,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("lualine").setup{}
@@ -120,6 +121,7 @@ return {
   {
     -- キーバインドナビ
     "folke/which-key.nvim",
+    enabled = not vim.g.vscode,
     event = "VeryLazy",
     keys = {
       {
