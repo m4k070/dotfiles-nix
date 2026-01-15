@@ -23,6 +23,7 @@ in {
       bitwarden-desktop
       blender
       btop 
+      claude-code
       cmake
       curl
       dbeaver-bin
@@ -303,6 +304,15 @@ in {
       # リロード
       bind r source-file ~/.tmux.conf
     '';
+  };
+
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      asvetliakov.vscode-neovim
+      vscodevim.vim
+      yzhang.markdown-all-in-one
+    ];
   };
 
   xdg.configFile."niri/config.kdl".source = ../configs/niri/config.kdl;

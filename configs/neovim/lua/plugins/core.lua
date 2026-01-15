@@ -135,11 +135,13 @@ return {
     -- 右下通知
     "j-hui/fidget.nvim",
     config = function()
-      require("fidget").setup{
-        display = {
-          render_limit = 3,
+      if not vim.g.vscode then
+        require("fidget").setup{
+          display = {
+            render_limit = 3,
+          }
         }
-      }
+      end
     end,
   },
   --------
@@ -259,16 +261,18 @@ return {
     },
     lazy = false,
     config = function()
-      require("neo-tree").setup{
-        enable_git_status = true,
-        window = {
-          width = "20%",
-          maxWidth = 25,
-          mappings = {
+      if not vim.g.vscode then
+        require("neo-tree").setup{
+          enable_git_status = true,
+          window = {
+            width = "20%",
+            maxWidth = 25,
+            mappings = {
+            },
           },
-        },
-      }
-      vim.keymap.set("n", "<C-n>", "<cmd>:Neotree<CR>")
+        }
+        vim.keymap.set("n", "<C-n>", "<cmd>:Neotree<CR>")
+      end
     end,
   },
 
@@ -345,7 +349,10 @@ return {
   },
 
   -- AI
-  "github/copilot.vim",
+  --"github/copilot.vim",
+  {
+    "folke/sidekick.nvim",
+  },
 
   -- go
   {
