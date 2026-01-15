@@ -227,6 +227,7 @@ in {
     enable = true;
     autocd = true;
     enableCompletion = true;
+    dotDir = "${config.xdg.configHome}/zsh";
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     shellAliases = {
@@ -308,7 +309,7 @@ in {
 
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [
+    profiles.default.extensions = with pkgs.vscode-extensions; [
       asvetliakov.vscode-neovim
       vscodevim.vim
       yzhang.markdown-all-in-one
