@@ -52,6 +52,7 @@ return {
   {
     "folke/noice.nvim",
     event = "VeryLazy",
+    enabled = not vim.g.vscode,
     -- dependencies = { "rcarriga/nvim-notify" },
     config = function()
       require("noice").setup({
@@ -134,14 +135,13 @@ return {
   {
     -- 右下通知
     "j-hui/fidget.nvim",
+    enabled = not vim.g.vscode,
     config = function()
-      if not vim.g.vscode then
-        require("fidget").setup{
-          display = {
-            render_limit = 3,
-          }
+      require("fidget").setup{
+        display = {
+          render_limit = 3,
         }
-      end
+      }
     end,
   },
   --------
@@ -259,20 +259,19 @@ return {
       "MunifTanjim/nui.nvim",
       "nvim-tree/nvim-web-devicons",
     },
+    enabled = not vim.g.vscode,
     lazy = false,
     config = function()
-      if not vim.g.vscode then
-        require("neo-tree").setup{
-          enable_git_status = true,
-          window = {
-            width = "20%",
-            maxWidth = 25,
-            mappings = {
-            },
+      require("neo-tree").setup{
+        enable_git_status = true,
+        window = {
+          width = "20%",
+          maxWidth = 25,
+          mappings = {
           },
-        }
-        vim.keymap.set("n", "<C-n>", "<cmd>:Neotree<CR>")
-      end
+        },
+      }
+      vim.keymap.set("n", "<C-n>", "<cmd>:Neotree<CR>")
     end,
   },
 

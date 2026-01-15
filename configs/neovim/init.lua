@@ -21,3 +21,6 @@ vim.filetype.add({
 })
 
 require("config.lazy")
+
+-- vscode neovim
+vim.g.vscode = os.getenv("VSCODE_NVIM") ~= nil
