@@ -91,7 +91,7 @@
       ATTRS{idVendor}=="1050",\
       RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
       SUBSYSTEM=="input",ATTRS{idVendor}=="4653",ATTRS{idProduct}=="0004",ENV{ID_INPUT_JOYSTICK}="0"
-      KERNEL=="hidraw*", ATTRS{idVendor}=="4653",ATTRS{idProduct}=="0004", MODE="0664", GROUP="plugdev"
+      KERNEL=="hidraw*",ATTRS{idVendor}=="4653",ATTRS{idProduct}=="0004",MODE="0664",GROUP="users"
   '';
 
   # NTP
