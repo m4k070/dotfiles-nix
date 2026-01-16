@@ -319,6 +319,11 @@ in {
   xdg.configFile."niri/config.kdl".source = ../configs/niri/config.kdl;
   xdg.configFile."starship.toml".source = ../configs/starship/starship.toml;
 
+  xdg.userDirs = {
+    download = "${config.home.homeDirectory}/Downloads";
+    pictures = "${config.home.homeDirectory}/Pictures";
+  };
+
   xdg.configFile."nvim" = {
     source = ../configs/neovim;
     recursive = true;
