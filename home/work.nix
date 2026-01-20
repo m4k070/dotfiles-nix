@@ -17,6 +17,8 @@
       packages = with pkgs; [
         (config.lib.nixGL.wrap alacritty)
         (config.lib.nixGL.wrap wezterm)
+        mysql80
+        postgresql
         remmina
         teams-for-linux
         zoom-us
