@@ -34,6 +34,7 @@
         font-size = 14;
         font-family = "UDEV Gothic";
         theme = "noctalia";
+        shell-integration-features = "ssh-env";
       };
     };
 
