@@ -82,7 +82,7 @@ in {
     pointerCursor = {
       gtk.enable = true;
       package = pkgs.catppuccin-cursors.latteDark;
-      name = "catpuccing";
+      name = "catppuccin-latte-dark-cursors";
       size = 24;
     };
   };
