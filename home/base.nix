@@ -78,6 +78,13 @@ in {
       vimPlugins.nvim-treesitter-parsers.lua
       vimPlugins.nvim-treesitter-parsers.typescript
     ];
+
+    pointerCursor = {
+      gtk.enable = true;
+      package = pkgs.catppuccin-cursors.latteDark;
+      name = "catpuccing";
+      size = 24;
+    };
   };
 
   i18n.inputMethod = {
