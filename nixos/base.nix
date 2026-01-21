@@ -86,10 +86,22 @@
     sudo.u2fAuth = true;
   };
   services.udev.extraRules = ''
-      ACTION=="remove",ATTRS{idProduct}=="0407",ATTRS{idVendor}=="1050",RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
+      SUBSYSTEM=="usb",ATTRS{idProduct}=="0407",ATTRS{idVendor}=="1050",TAG+="systemd",ENV{SYSTEMD_ALIAS}="/sys/subsystem/usb/devices/yubikey"
       SUBSYSTEM=="input",ATTRS{idVendor}=="4653",ATTRS{idProduct}=="0004",ENV{ID_INPUT_JOYSTICK}="0"
       KERNEL=="hidraw*",ATTRS{idVendor}=="4653",ATTRS{idProduct}=="0004",MODE="0664",GROUP="users"
   '';
+  systemd.user.services.yubikey-connect-service = {
+    enable = true;
+    after = [ "network.target" ];
+    description = "yubikey connect service";
+    bindsTo = [ "sys-subsystem-usb-devices-yubikey.device" ];
+    wantedBy = [ "multi-user.target" "sys-subsystem-usb-devices-yubikey.device"  ];
+    serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.coreutils}/bin/echo 'Connected Yubikey.'";
+        ExecStop = "/run/current-system/sw/bin/loginctl lock-sessions";
+    };
+  };
 
   # NTP
   services.chrony = {
@@ -160,6 +172,8 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
     #mako
+    catppuccin-cursors
+    everforest-cursors
     ffmpeg-headless
     ffmpegthumbnailer
     gdk-pixbuf

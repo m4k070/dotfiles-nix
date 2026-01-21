@@ -691,4 +691,9 @@ binds {
     Mod+Shift+P { power-off-monitors; }
 }
 
+cursor {
+  xcursor-theme "catpuccin"
+  xcursor-size 48
+}
+
 include "noctalia.kdl"
