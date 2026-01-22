@@ -36,10 +36,11 @@ in {
       gcc
       gdb
       gemini-cli
-      gnumake
       gh
       gimp
+      github-copilot-cli
       git
+      gnumake
       go-task
       jq
       logseq
