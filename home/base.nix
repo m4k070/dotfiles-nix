@@ -35,6 +35,7 @@ in {
       fzf
       gcc
       gdb
+      gemini-cli
       gnumake
       gh
       gimp
@@ -50,6 +51,7 @@ in {
       starship
       thorium-reader
       udev-gothic
+      uv
       # vivaldi
       vivaldi-ffmpeg-codecs
       xwayland-satellite
