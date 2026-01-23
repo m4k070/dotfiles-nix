@@ -18,7 +18,10 @@
     nix-hazkey.url = "github:aster-void/nix-hazkey";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, nix-hazkey, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, nix-hazkey, ... }@inputs:
+  let
+    extraSpecialArgs = { inherit nixgl noctalia nix-hazkey; };
+  in {
     nixosConfigurations = {
       sirius = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -31,11 +34,7 @@
                 useUserPackages = true;
                 users.makoto = ./home/work.nix;
                 backupFileExtension = ".backup";
-                extraSpecialArgs = {
-                  inherit nixgl;
-                  inherit noctalia;
-                  inherit nix-hazkey;
-                };
+                inherit extraSpecialArgs;
               };
             }
         ];
@@ -51,11 +50,7 @@
                 useUserPackages = true;
                 users.makoto = ./home/home.nix;
                 backupFileExtension = ".backup";
-                extraSpecialArgs = {
-                  inherit nixgl;
-                  inherit noctalia;
-                  inherit nix-hazkey;
-                };
+                inherit extraSpecialArgs;
               };
             }
         ];
@@ -67,11 +62,7 @@
           system = "x86_64-linux";
           config.allowUnfree = true;
         };
-        extraSpecialArgs = {
-          inherit nixgl;
-          inherit noctalia;
-          inherit nix-hazkey;
-        };
+        inherit extraSpecialArgs;
         modules = [./home/work.nix];
       };
       home = home-manager.lib.homeManagerConfiguration {
@@ -79,11 +70,7 @@
           system = "x86_64-linux";
           config.allowUnfree = true;
         };
-        extraSpecialArgs = {
-          inherit nixgl;
-          inherit noctalia;
-          inherit nix-hazkey;
-        };
+        inherit extraSpecialArgs;
         modules = [./home/home.nix];
       };
     };
