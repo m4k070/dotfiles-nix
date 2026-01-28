@@ -43,6 +43,7 @@ in {
       gnumake
       go-task
       jq
+      jujutsu
       logseq
       mise
       nb
