@@ -40,6 +40,7 @@ in {
       gimp
       github-copilot-cli
       git
+      git-wt
       gnumake
       go-task
       jq
