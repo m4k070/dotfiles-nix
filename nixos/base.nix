@@ -222,6 +222,10 @@
 
   virtualisation.docker = {
     enable = true;
+    # daemon.settings.pruning = {
+    #   enabled = true;
+    #   interval = "24h";
+    # };
   };
 
   # This value determines the NixOS release from which the default
