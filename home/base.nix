@@ -37,6 +37,7 @@ in {
       gdb
       gemini-cli
       gh
+      ghq
       gimp
       github-copilot-cli
       git

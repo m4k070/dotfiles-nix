@@ -18,6 +18,7 @@
         (config.lib.nixGL.wrap alacritty)
         (config.lib.nixGL.wrap wezterm)
         mysql80
+        poppler-utils
         postgresql
         remmina
         teams-for-linux
