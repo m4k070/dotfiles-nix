@@ -14,6 +14,7 @@
   networking.hostName = "vega"; # Define your hostname.
 
   environment.systemPackages = with pkgs; [
+    cudaPackages.cudatoolkit
     heroic
     protonup-qt
     sunshine
