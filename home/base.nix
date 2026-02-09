@@ -45,10 +45,10 @@ in {
       go-task
       jq
       jujutsu
-      logseq
       mise
       nb
       niri
+      obsidian
       rclone
       ripgrep
       starship
