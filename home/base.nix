@@ -238,9 +238,10 @@ in {
 
   programs.zellij = {
     enable = true;
-    enableZshIntegration = true;
+    #enableZshIntegration = true;
     extraConfig = ''
 show_startup_tips false
+theme "kanagawa"
 plugins {
     tab-bar { path "tab-bar"; }
     status-bar { path "status-bar"; }
