@@ -236,6 +236,20 @@ in {
     vimAlias = true;
   };
 
+  programs.zellij = {
+    enable = true;
+    enableZshIntegration = true;
+    extraConfig = ''
+show_startup_tips false
+plugins {
+    tab-bar { path "tab-bar"; }
+    status-bar { path "status-bar"; }
+    strider { path "strider"; }        // ファイルマネージャー
+    compact-bar { path "compact-bar"; } // コンパクトなステータスバー
+}
+    '';
+  };
+
   programs.zsh = {
     enable = true;
     autocd = true;
