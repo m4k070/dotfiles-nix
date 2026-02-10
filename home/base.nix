@@ -45,6 +45,7 @@ in {
       go-task
       jq
       jujutsu
+      lazygit
       mise
       nb
       niri
