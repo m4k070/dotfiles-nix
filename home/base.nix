@@ -44,8 +44,8 @@ in {
       gnumake
       go-task
       jq
-      jujutsu
       lazygit
+      microsoft-edge
       mise
       nb
       niri
