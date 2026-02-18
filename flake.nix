@@ -30,10 +30,10 @@
             home-manager.nixosModules.default
             {
               home-manager = {
+                users.makoto = ./home/work.nix;
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.makoto = ./home/work.nix;
-                backupFileExtension = ".backup";
+                backupFileExtension = "backup";
                 inherit extraSpecialArgs;
               };
             }
@@ -46,10 +46,10 @@
             home-manager.nixosModules.default
             {
               home-manager = {
+                users.makoto = ./home/home.nix;
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.makoto = ./home/home.nix;
-                backupFileExtension = ".backup";
+                backupFileExtension = "backup";
                 inherit extraSpecialArgs;
               };
             }
