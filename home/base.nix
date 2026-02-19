@@ -61,6 +61,7 @@ in {
       xwayland-satellite
       yazi
       yq
+      zed-editor
       zig
       # Language Servers
       clojure-lsp
