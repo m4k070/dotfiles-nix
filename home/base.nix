@@ -1,6 +1,11 @@
 {config, pkgs, nixgl, lib, noctalia, nix-hazkey, ...}:
 let
   inherit (import ./options.nix) username;
+  # SDK 8 と 10 を統合したパッケージを作成
+  dotnet-combined = with pkgs.dotnetCorePackages; combinePackages [
+    sdk_10_0
+    sdk_8_0
+  ];
 in {
   imports = [
     noctalia.homeModules.default
@@ -28,7 +33,7 @@ in {
       cmake
       curl
       dbeaver-bin
-      dotnet-sdk_10
+      dotnet-combined
       eza
       firefox
       fuzzel
