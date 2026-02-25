@@ -272,6 +272,12 @@ return {
           mappings = {
           },
         },
+        filesystem = {
+          follow_current_file = {
+            enabled = false,
+            leave_dirs_open = true,
+          },
+        },
       }
       vim.keymap.set("n", "<C-n>", "<cmd>:Neotree<CR>")
     end,
