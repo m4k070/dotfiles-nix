@@ -17,6 +17,7 @@
       packages = with pkgs; [
         (config.lib.nixGL.wrap alacritty)
         (config.lib.nixGL.wrap wezterm)
+        libreoffice
         mysql80
         poppler-utils
         postgresql
