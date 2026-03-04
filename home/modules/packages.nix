@@ -1,0 +1,74 @@
+{ pkgs, ... }:
+let
+  dotnet-combined = with pkgs.dotnetCorePackages; combinePackages [
+    sdk_8_0
+    sdk_10_0
+  ];
+in {
+  home.packages = with pkgs; [
+    bat
+    bitwarden-cli
+    bitwarden-desktop
+    blender
+    btop
+    claude-code
+    cmake
+    curl
+    dbeaver-bin
+    dotnet-combined
+    eza
+    firefox
+    fuzzel
+    fzf
+    gcc
+    gdb
+    gemini-cli
+    gh
+    ghq
+    gimp
+    github-copilot-cli
+    git
+    gnumake
+    go-task
+    jq
+    lazygit
+    microsoft-edge
+    mise
+    nb
+    niri
+    obsidian
+    rclone
+    ripgrep
+    starship
+    thorium-reader
+    udev-gothic
+    uv
+    vivaldi-ffmpeg-codecs
+    xwayland-satellite
+    yazi
+    yq
+    zed-editor
+    zig
+    # Language Servers
+    clojure-lsp
+    fsautocomplete
+    gopls
+    lua-language-server
+    marksman
+    postgres-language-server
+    rust-analyzer
+    svelte-language-server
+    typescript-language-server
+    yaml-language-server
+    # vim plugins
+    vimPlugins.Ionide-vim
+    vimPlugins.nvim-treesitter-parsers.clojure
+    vimPlugins.nvim-treesitter-parsers.css
+    vimPlugins.nvim-treesitter-parsers.fsharp
+    vimPlugins.nvim-treesitter-parsers.go
+    vimPlugins.nvim-treesitter-parsers.html
+    vimPlugins.nvim-treesitter-parsers.json
+    vimPlugins.nvim-treesitter-parsers.lua
+    vimPlugins.nvim-treesitter-parsers.typescript
+  ];
+}
