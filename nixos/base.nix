@@ -187,6 +187,7 @@
     networkmanagerapplet
     nwg-look
     openssh
+    openssl_3
     papirus-icon-theme
     pavucontrol
     usbutils
