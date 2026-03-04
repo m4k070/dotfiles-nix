@@ -13,6 +13,9 @@
     ];
 
   networking.hostName = "sirius"; # Define your hostname.
+  networking.extraHosts = ''
+  127.0.0.1 pvchecker.local
+'';
 
   powerManagement.enable = true;
   services.logind.settings.Login = {
