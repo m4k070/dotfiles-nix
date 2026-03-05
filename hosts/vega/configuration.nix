@@ -36,8 +36,34 @@
     autoStart = true;
     capSysAdmin = true; # only needed for Wayland -- omit this when using with Xorg
     openFirewall = true;
-    settings = {
-      command = "${pkgs.gamescope}/bin/gamescope -W 2560 -H 1440 -w 2560 -h 1440 -f --steam -- steam -bigpicture";
+    applications = {
+      apps = [
+        {
+          name = "Desktop";
+          image-path = "desktop.png";
+          exclude-global-prep-cmd = "false";
+          auto-detach = "true";
+          wait-all = "true";
+          exit-timeout = "5";
+        }
+        {
+          name = "Steam Big Picture";
+          image-path = "steam.png";
+          exclude-global-prep-cmd = "false";
+          auto-detach = "true";
+          wait-all = "true";
+          exit-timeout = "5";
+          detached = [
+            "setsid gamescope -W \${SUNSHINE_CLIENT_WIDTH} -H \${SUNSHINE_CLIENT_HEIGHT} -w \${SUNSHINE_CLIENT_WIDTH} -h \${SUNSHINE_CLIENT_HEIGHT} -f --steam -- steam -bigpicture"
+          ];
+          prep-cmd = [
+            {
+              do = "";
+              undo = "setsid steam steam://close/bigpicture";
+            }
+          ];
+        }
+      ];
     };
   };
 
