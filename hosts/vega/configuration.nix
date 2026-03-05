@@ -15,6 +15,7 @@
 
   environment.systemPackages = with pkgs; [
     cudaPackages.cudatoolkit
+    gamescope
     heroic
     protonup-qt
     sunshine
@@ -35,6 +36,9 @@
     autoStart = true;
     capSysAdmin = true; # only needed for Wayland -- omit this when using with Xorg
     openFirewall = true;
+    settings = {
+      command = "${pkgs.gamescope}/bin/gamescope -W 2560 -H 1440 -w 2560 -h 1440 -f --steam -- steam -bigpicture";
+    };
   };
 
   hardware.nvidia = {
