@@ -29,7 +29,7 @@
           exclude-global-prep-cmd = "false";
           auto-detach = "true";
           detached = [
-            "setsid gamescope -W \${SUNSHINE_CLIENT_WIDTH} -H \${SUNSHINE_CLIENT_HEIGHT} -w \${SUNSHINE_CLIENT_WIDTH} -h \${SUNSHINE_CLIENT_HEIGHT} -f --steam -- steam -bigpicture"
+            "gamescope -W 1920 -H 1080 -w 1920 -h 1080 -f --steam -- steam -bigpicture"
           ];
           prep-cmd = [
             {

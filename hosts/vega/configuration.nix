@@ -10,6 +10,9 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
+  nixpkgs.overlays = [
+    (import ../../katrain-nix/katrain-overlay.nix)
+  ];
 
   networking.hostName = "vega"; # Define your hostname.
 
@@ -17,6 +20,9 @@
     cudaPackages.cudatoolkit
     gamescope
     heroic
+    (pkgs.katago.override { backend = "cuda"; })
+    katrain
+    pipx
     protonup-qt
     sunshine
   ];
@@ -57,6 +63,4 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
-
-  programs.gamemode.enable = true;
 }
