@@ -58,6 +58,12 @@
           output.alias = "OFFICE3";
         }
         {
+          output.criteria = "PNP(XMD) Mi TV 0x00000001";
+          output.scale = 2.0;
+          output.mode = "3840x2160@60.000";
+          output.alias = "MEETING1";
+        }
+        {
           profile.name = "docked";
           profile.outputs = [
             { criteria = "$INTERNAL"; position = "1920,0"; }
@@ -76,6 +82,13 @@
           profile.outputs = [
             { criteria = "$INTERNAL"; position = "0,0"; }
             { criteria = "$OFFICE3"; position = "1920,0"; }
+          ];
+        }
+        {
+          profile.name = "meeting1";
+          profile.outputs = [
+            { criteria = "$INTERNAL"; position = "0,2160"; }
+            { criteria = "$MEETING1"; position = "0,0"; }
           ];
         }
         {
