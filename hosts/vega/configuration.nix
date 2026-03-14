@@ -57,6 +57,10 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
   hardware.nvidia-container-toolkit.enable = true;
+
+  hardware.sane.enable = true;
+  hardware.sane.extraBackends = [ pkgs.sane-airscan ]; # Helpful for network scanners
+  services.udev.packages = [ pkgs.brscan5 ];
   
   programs.steam = {
     enable = true;
