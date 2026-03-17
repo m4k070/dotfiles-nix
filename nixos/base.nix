@@ -89,6 +89,7 @@
       SUBSYSTEM=="usb",ATTRS{idProduct}=="0407",ATTRS{idVendor}=="1050",TAG+="systemd",ENV{SYSTEMD_ALIAS}="/sys/subsystem/usb/devices/yubikey"
       SUBSYSTEM=="input",ATTRS{idVendor}=="4653",ATTRS{idProduct}=="0004",ENV{ID_INPUT_JOYSTICK}="0"
       KERNEL=="hidraw*",ATTRS{idVendor}=="4653",ATTRS{idProduct}=="0004",MODE="0664",GROUP="users"
+      SUBSYSTEM=="usb",ATTRS{idVendor}=="18d1",ATTRS{idProduct}=="4ee0",TAG+="uaccess"
   '';
   systemd.user.services.yubikey-connect-service = {
     enable = true;

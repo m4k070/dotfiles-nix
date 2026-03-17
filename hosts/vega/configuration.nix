@@ -17,6 +17,7 @@
   networking.hostName = "vega"; # Define your hostname.
 
   environment.systemPackages = with pkgs; [
+    android-tools
     cudaPackages.cudatoolkit
     gamescope
     heroic
