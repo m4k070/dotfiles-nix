@@ -8,7 +8,7 @@ in {
   home.packages = with pkgs; [
     bat
     bitwarden-cli
-    bitwarden-desktop
+    # bitwarden-desktop
     blender
     btop
     claude-code

@@ -18,7 +18,7 @@
     poppler-utils
     postgresql
     remmina
-    teams-for-linux
+    # teams-for-linux
     zoom-us
   ];
 

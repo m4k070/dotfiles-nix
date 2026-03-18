@@ -14,7 +14,7 @@
 
   networking.hostName = "sirius"; # Define your hostname.
   networking.extraHosts = ''
-  127.0.0.1 pvchecker.local
+  10.100.1.150 pvchecker.local
 '';
 
   powerManagement.enable = true;
