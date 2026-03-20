@@ -209,7 +209,7 @@
   services.tailscale.enable = true;
   networking.firewall = {
     enable = true;
-    trustedInterfaces = ["tailscale0"];
+    trustedInterfaces = [ "docker0" "tailscale0" ];
     allowedUDPPorts = [config.services.tailscale.port];
   };
 
