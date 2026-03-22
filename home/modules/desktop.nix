@@ -1,6 +1,6 @@
-{ config, pkgs, noctalia, nix-hazkey, ... }: {
+{ config, pkgs, nix-hazkey, ... }: {
   imports = [
-    noctalia.homeModules.default
+    #noctalia.homeModules.default
     nix-hazkey.homeModules.hazkey
   ];
 
@@ -137,10 +137,10 @@
     ];
   };
 
-  programs.noctalia-shell = {
-    enable = true;
-    systemd.enable = true;
-  };
+  #programs.noctalia-shell = {
+  #  enable = true;
+  #  systemd.enable = true;
+  #};
 
   xdg.enable = true;
   xdg.mime.enable = true;

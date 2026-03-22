@@ -117,7 +117,7 @@
 
   # bluetooth
   hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
+  #services.blueman.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -160,10 +160,6 @@
   programs.nix-ld.enable = true;
 
   programs.zsh = {
-    enable = true;
-  };
-
-  programs.niri = {
     enable = true;
   };
 

@@ -30,6 +30,7 @@
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm = {
     enable = true;
+    wayland.enable = true;
   };
 
   services.pipewire.extraConfig.pipewire."92-low-latency" = {
@@ -66,7 +67,7 @@
   hardware.sane.enable = true;
   hardware.sane.extraBackends = [ pkgs.sane-airscan ]; # Helpful for network scanners
   services.udev.packages = [ pkgs.brscan5 ];
-  
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
