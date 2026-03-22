@@ -58,4 +58,9 @@
     enable = true;
     systemd.enable = true;
   };
+
+  home.sessionVariables = {
+    "QT_QPA_PLATFORMTHEME" = "gtk3";
+    "NIXOS_OZONE_WL" = "1";
+  };
 }
