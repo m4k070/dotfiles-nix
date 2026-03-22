@@ -20,13 +20,17 @@
     android-tools
     cudaPackages.cudatoolkit
     gamescope
-    heroic
     (pkgs.katago.override { backend = "cuda"; })
     katrain
     pipx
     protonup-qt
     sunshine
   ];
+
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+  };
 
   services.pipewire.extraConfig.pipewire."92-low-latency" = {
     "context.properties" = {

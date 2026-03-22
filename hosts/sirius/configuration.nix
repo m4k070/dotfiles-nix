@@ -17,6 +17,9 @@
   10.100.1.150 pvchecker.local
 '';
 
+  services.gnome.gnome-keyring.enable = true;
+  services.displayManager.gdm.enable = true;
+
   powerManagement.enable = true;
   services.logind.settings.Login = {
     HandleLidSwitch = "suspend";
