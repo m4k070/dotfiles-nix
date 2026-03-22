@@ -1,6 +1,7 @@
-{ config, pkgs, nixgl, lib, ... }: {
+{ config, pkgs, noctalia, nixgl, lib, ... }: {
   imports = [
     ./base.nix
+    noctalia.homeModules.default
   ];
 
   # nixGL を使ってGPUドライバーをラップする（非NixOS環境向け）
@@ -51,5 +52,10 @@
         "github.com/tsukasa-ind/"
       ];
     };
+  };
+
+  programs.noctalia-shell = {
+    enable = true;
+    systemd.enable = true;
   };
 }
