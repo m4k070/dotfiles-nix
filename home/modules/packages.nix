@@ -40,7 +40,7 @@ in {
     rclone
     ripgrep
     starship
-    thorium-reader
+    #thorium-reader
     udev-gothic
     uv
     vivaldi-ffmpeg-codecs

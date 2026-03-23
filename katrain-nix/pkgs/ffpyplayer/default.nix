@@ -1,7 +1,7 @@
 { lib
 , buildPythonPackage
 , fetchPypi
-, cython_3_1
+, cython
 , pkg-config
 , setuptools
 , wheel
@@ -29,7 +29,7 @@ buildPythonPackage rec {
   '';
 
   nativeBuildInputs = [
-    cython_3_1
+    cython
     pkg-config
     setuptools
     wheel

@@ -27,10 +27,9 @@
     sunshine
   ];
 
-  services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm = {
+  programs.niri.enable = true;
+  services.displayManager.gdm = {
     enable = true;
-    wayland.enable = true;
   };
 
   services.pipewire.extraConfig.pipewire."92-low-latency" = {

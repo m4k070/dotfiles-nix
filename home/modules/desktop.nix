@@ -1,6 +1,6 @@
-{ config, pkgs, nix-hazkey, ... }: {
+{ config, pkgs, noctalia, nix-hazkey, ... }: {
   imports = [
-    #noctalia.homeModules.default
+    noctalia.homeModules.default
     nix-hazkey.homeModules.hazkey
   ];
 
@@ -124,6 +124,11 @@
     size = 24;
   };
 
+  programs.noctalia-shell = {
+    enable = true;
+    systemd.enable = true;
+  };
+
   programs.starship = {
     enable = true;
   };
@@ -136,11 +141,6 @@
       "--enable-wayland-ime"
     ];
   };
-
-  #programs.noctalia-shell = {
-  #  enable = true;
-  #  systemd.enable = true;
-  #};
 
   xdg.enable = true;
   xdg.mime.enable = true;
