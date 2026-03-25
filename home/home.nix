@@ -7,7 +7,7 @@
     alacritty
     discord
     ghostty
-    #heroic
+    heroic
     wezterm
     wlogout
   ];
