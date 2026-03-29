@@ -111,6 +111,7 @@
       name = "Tokyonight-Dark";
       package = pkgs.tokyonight-gtk-theme;
     };
+    gtk4.theme = null;
   };
 
   qt = {
@@ -147,7 +148,6 @@
 
   xdg.configFile."niri/config.kdl".source = ../../configs/niri/config.kdl;
   xdg.configFile."starship.toml".source = ../../configs/starship/starship.toml;
-  xdg.configFile."yazi/theme.toml".source = ../../configs/yazi/theme.toml;
 
   xdg.userDirs = {
     download = "${config.home.homeDirectory}/Downloads";

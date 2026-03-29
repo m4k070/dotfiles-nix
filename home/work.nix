@@ -13,10 +13,12 @@
   home.packages = with pkgs; [
     (config.lib.nixGL.wrap alacritty)
     (config.lib.nixGL.wrap wezterm)
+    clingo
     libreoffice
     mysql80
     poppler-utils
     postgresql
+    python314
     remmina
     # teams-for-linux
     zoom-us
