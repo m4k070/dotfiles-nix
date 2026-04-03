@@ -16,9 +16,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-hazkey.url = "github:aster-void/nix-hazkey";
+    claude-code.url = "github:sadjow/claude-code-nix";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, nix-hazkey, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, nix-hazkey, claude-code, ... }@inputs:
   let
     extraSpecialArgs = { inherit nixgl noctalia nix-hazkey; };
   in {
@@ -28,6 +29,7 @@
         modules = [
           ./hosts/sirius/configuration.nix
             home-manager.nixosModules.default
+            { nixpkgs.overlays = [ claude-code.overlays.default ]; }
             {
               home-manager = {
                 users.makoto = ./home/work.nix;
@@ -44,6 +46,7 @@
         modules = [
           ./hosts/vega/configuration.nix
             home-manager.nixosModules.default
+            { nixpkgs.overlays = [ claude-code.overlays.default ]; }
             {
               home-manager = {
                 users.makoto = ./home/home.nix;
@@ -63,7 +66,10 @@
           config.allowUnfree = true;
         };
         inherit extraSpecialArgs;
-        modules = [./home/work.nix];
+        modules = [
+          { nixpkgs.overlays = [ claude-code.overlays.default ]; }
+          ./home/work.nix
+        ];
       };
       home = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
@@ -71,7 +77,10 @@
           config.allowUnfree = true;
         };
         inherit extraSpecialArgs;
-        modules = [./home/home.nix];
+        modules = [
+          { nixpkgs.overlays = [ claude-code.overlays.default ]; }
+          ./home/home.nix
+        ];
       };
     };
   };
