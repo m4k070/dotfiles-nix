@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, claude-code, hibiki, ... }:
 let
   dotnet-combined = with pkgs.dotnetCorePackages; combinePackages [
     sdk_8_0
@@ -11,7 +11,8 @@ in {
     bitwarden-desktop
     blender
     btop
-    claude-code
+    claude-code.packages.${pkgs.system}.default
+    hibiki.packages.${pkgs.system}.default
     cmake
     curl
     dbeaver-bin

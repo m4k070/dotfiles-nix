@@ -17,11 +17,15 @@
     };
     nix-hazkey.url = "github:aster-void/nix-hazkey";
     claude-code.url = "github:sadjow/claude-code-nix";
+    hibiki = {
+      url = "github:linuxmobile/hibiki";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, nix-hazkey, claude-code, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, nix-hazkey, claude-code, hibiki, ... }@inputs:
   let
-    extraSpecialArgs = { inherit nixgl noctalia nix-hazkey; };
+    extraSpecialArgs = { inherit nixgl noctalia nix-hazkey claude-code hibiki; };
   in {
     nixosConfigurations = {
       sirius = nixpkgs.lib.nixosSystem {
@@ -29,7 +33,6 @@
         modules = [
           ./hosts/sirius/configuration.nix
             home-manager.nixosModules.default
-            { nixpkgs.overlays = [ claude-code.overlays.default ]; }
             {
               home-manager = {
                 users.makoto = ./home/work.nix;
@@ -46,7 +49,6 @@
         modules = [
           ./hosts/vega/configuration.nix
             home-manager.nixosModules.default
-            { nixpkgs.overlays = [ claude-code.overlays.default ]; }
             {
               home-manager = {
                 users.makoto = ./home/home.nix;
@@ -66,10 +68,7 @@
           config.allowUnfree = true;
         };
         inherit extraSpecialArgs;
-        modules = [
-          { nixpkgs.overlays = [ claude-code.overlays.default ]; }
-          ./home/work.nix
-        ];
+        modules = [ ./home/work.nix ];
       };
       home = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
@@ -77,10 +76,7 @@
           config.allowUnfree = true;
         };
         inherit extraSpecialArgs;
-        modules = [
-          { nixpkgs.overlays = [ claude-code.overlays.default ]; }
-          ./home/home.nix
-        ];
+        modules = [ ./home/home.nix ];
       };
     };
   };
