@@ -29,8 +29,9 @@
           image-path = "steam.png";
           exclude-global-prep-cmd = "false";
           auto-detach = "true";
+          cmd = "";
           detached = [
-            "gamescope -W 1920 -H 1080 -w 1920 -h 1080 -f --steam -- steam -bigpicture"
+            "setsid steam steam://open/bigpicture"
           ];
           prep-cmd = [
             {
