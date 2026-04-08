@@ -38,6 +38,7 @@ in {
     nb
     niri
     obsidian
+    postgresql
     rclone
     ripgrep
     starship
