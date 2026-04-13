@@ -18,7 +18,11 @@
 '';
 
   services.gnome.gnome-keyring.enable = true;
-  services.displayManager.gdm.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
+  security.pam.services.sddm.enableGnomeKeyring = true;
 
   powerManagement.enable = true;
   services.logind.settings.Login = {
@@ -34,4 +38,6 @@
   programs.niri = {
     enable = true;
   };
+
+  services.desktopManager.plasma6.enable = true;
 }

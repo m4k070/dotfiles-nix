@@ -75,8 +75,6 @@
   #services.displayManager.gdm.enable = true;
   #services.desktopManager.gnome.enable = true;
   #environment.gnome.excludePackages = with pkgs; [ gnome-tour gnome-user-docs ];
-  security.pam.services.gdm.enableGnomeKeyring = true;
-  security.pam.services.gdm-password.enableGnomeKeyring = true;
   security.pam.services.greetd.enableGnomeKeyring = true;
 
   security.pam.u2f = {
@@ -241,8 +239,8 @@
       download-buffer-size = 524288000;
       auto-optimise-store = true;
       experimental-features = ["nix-command" "flakes"];
-      substituters = [ "https://cache.nixos-cuda.org" ];
-      trusted-public-keys = [ "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M=" ];
+      extra-substituters = [ "https://cache.nixos-cuda.org" "https://noctalia.cachix.org" ];
+      extra-trusted-public-keys = [ "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M=" "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
     };
 
     gc = {

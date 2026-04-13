@@ -31,6 +31,8 @@
   services.displayManager.gdm = {
     enable = true;
   };
+  security.pam.services.gdm.enableGnomeKeyring = true;
+  security.pam.services.gdm-password.enableGnomeKeyring = true;
 
   services.pipewire.extraConfig.pipewire."92-low-latency" = {
     "context.properties" = {
