@@ -1,8 +1,6 @@
 { config, pkgs, lib, ... }: {
   home.sessionVariables = {
-    "QT_QPA_PLATFORMTHEME" = "gtk3";
     "SSH_AUTH_SOCK" = "$HOME/.bitwarden-ssh-agent.sock";
-    "NIXOS_OZONE_WL" = "1";
   };
 
   programs.direnv = {

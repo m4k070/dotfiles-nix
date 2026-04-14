@@ -116,6 +116,12 @@
 
   qt = {
     enable = true;
+    platformTheme.name = "adwaita";
+    style.name = "adwaita-dark";
+  };
+
+  home.sessionVariables = {
+    "NIXOS_OZONE_WL" = "1";
   };
 
   home.pointerCursor = {
