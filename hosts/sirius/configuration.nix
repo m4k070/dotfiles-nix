@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -18,11 +18,7 @@
 '';
 
   services.gnome.gnome-keyring.enable = true;
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
-  security.pam.services.sddm.enableGnomeKeyring = true;
+  services.displayManager.gdm.enable = true;
 
   powerManagement.enable = true;
   services.logind.settings.Login = {
@@ -39,5 +35,16 @@
     enable = true;
   };
 
-  services.desktopManager.plasma6.enable = true;
+  programs.kdeconnect = {
+    enable = true;
+    package = pkgs.gnomeExtensions.gsconnect;
+  };
+
+  services.desktopManager.gnome.enable = true;
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-tour
+    gnome-user-docs
+    gnome-initial-setup
+  ];
+
 }
