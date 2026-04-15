@@ -7,6 +7,7 @@
   imports =
     [
       ../../nixos/base.nix
+      ../../nixos/gnome.nix
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
@@ -18,6 +19,7 @@
 
   environment.systemPackages = with pkgs; [
     android-tools
+    gnomeExtensions.gsconnect
     cudaPackages.cudatoolkit
     gamescope
     (pkgs.katago.override { backend = "cuda"; })
@@ -27,13 +29,12 @@
     sunshine
   ];
 
-  programs.niri.enable = true;
-  services.displayManager.gdm = {
+  programs.kdeconnect = {
     enable = true;
+    package = pkgs.gnomeExtensions.gsconnect;
   };
-  security.pam.services.gdm.enableGnomeKeyring = true;
-  security.pam.services.gdm-password.enableGnomeKeyring = true;
 
+  programs.niri.enable = true;
   services.pipewire.extraConfig.pipewire."92-low-latency" = {
     "context.properties" = {
       "default.clock.rate" = 48000;

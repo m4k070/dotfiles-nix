@@ -8,6 +8,7 @@
   imports =
     [
       ../../nixos/base.nix
+      ../../nixos/gnome.nix
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
@@ -16,9 +17,6 @@
   networking.extraHosts = ''
   10.100.1.150 pvchecker.local
 '';
-
-  services.gnome.gnome-keyring.enable = true;
-  services.displayManager.gdm.enable = true;
 
   powerManagement.enable = true;
   services.logind.settings.Login = {
@@ -39,12 +37,5 @@
     enable = true;
     package = pkgs.gnomeExtensions.gsconnect;
   };
-
-  services.desktopManager.gnome.enable = true;
-  environment.gnome.excludePackages = with pkgs; [
-    gnome-tour
-    gnome-user-docs
-    gnome-initial-setup
-  ];
 
 }

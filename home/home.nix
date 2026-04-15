@@ -31,7 +31,7 @@
           auto-detach = "true";
           cmd = "";
           detached = [
-            "setsid steam steam://open/bigpicture"
+            "capsh --delamb=cap_sys_admin -- -c \"gamescope -W 1920 -H 1080 -w 1920 -h 1080 -f --steam -- steam steam://open/bigpicture\""
           ];
           prep-cmd = [
             {
