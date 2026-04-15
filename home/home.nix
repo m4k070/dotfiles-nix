@@ -10,6 +10,7 @@
     heroic
     wezterm
     wlogout
+    xdg-user-dirs
   ];
 
   home.file.".config/sunshine/apps.json" = {

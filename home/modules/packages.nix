@@ -41,6 +41,7 @@ in {
     postgresql
     rclone
     ripgrep
+    sd
     starship
     #thorium-reader
     udev-gothic
