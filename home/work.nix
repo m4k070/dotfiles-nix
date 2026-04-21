@@ -15,7 +15,7 @@
     (config.lib.nixGL.wrap wezterm)
     clingo
     libreoffice
-    mysql80
+    #mysql80
     poppler-utils
     postgresql
     python314
