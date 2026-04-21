@@ -20,7 +20,7 @@
     postgresql
     python314
     remmina
-    # teams-for-linux
+    teams-for-linux
     zoom-us
   ];
 
