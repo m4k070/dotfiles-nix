@@ -13,6 +13,7 @@
   home.packages = with pkgs; [
     (config.lib.nixGL.wrap alacritty)
     (config.lib.nixGL.wrap wezterm)
+    babashka
     clingo
     libreoffice
     #mysql80
@@ -35,7 +36,7 @@
     settings = {
       font-size = 14;
       font-family = "UDEV Gothic";
-      theme = "noctalia";
+      theme = "Earthsong";
       shell-integration-features = "ssh-env";
     };
   };
