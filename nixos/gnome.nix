@@ -15,4 +15,14 @@
     gnomeExtensions.paperwm
     gnomeExtensions.appindicator
   ];
+  programs.dconf.enable = true;
+  programs.dconf.profiles.user.databases = [
+    {
+      settings = {
+        "org/gnome/shell" = {
+          enabled-extensions = [ "appindicatorsupport@rgcjonas.gmail.com" ];
+        };
+      };
+    }
+  ];
 }
