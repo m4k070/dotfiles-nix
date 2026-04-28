@@ -5,6 +5,7 @@
 
   home.packages = with pkgs; [
     alacritty
+    davinci-resolve
     discord
     ghostty
     heroic
