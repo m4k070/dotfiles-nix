@@ -15,6 +15,7 @@ in {
     hibiki.packages.${pkgs.system}.default
     cmake
     curl
+    davinci-resolve
     dbeaver-bin
     dotnet-combined
     eza
