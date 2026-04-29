@@ -18,6 +18,7 @@ in {
     dbeaver-bin
     dotnet-combined
     eza
+    fd
     firefox
     fuzzel
     fzf
