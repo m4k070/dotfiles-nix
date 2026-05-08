@@ -74,5 +74,6 @@ in {
     vimPlugins.nvim-treesitter-parsers.json
     vimPlugins.nvim-treesitter-parsers.lua
     vimPlugins.nvim-treesitter-parsers.typescript
+    skkDictionaries.emoji
   ];
 }
