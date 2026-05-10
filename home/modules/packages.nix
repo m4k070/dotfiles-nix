@@ -16,6 +16,7 @@ in {
     cmake
     curl
     dbeaver-bin
+    dig
     dotnet-combined
     eza
     fd
@@ -48,6 +49,7 @@ in {
     udev-gothic
     uv
     vivaldi-ffmpeg-codecs
+    whois
     xwayland-satellite
     yazi
     yq
