@@ -20,7 +20,10 @@
     {
       settings = {
         "org/gnome/shell" = {
-          enabled-extensions = [ "appindicatorsupport@rgcjonas.gmail.com" ];
+          enabled-extensions = [
+            "appindicatorsupport@rgcjonas.gmail.com"
+            "paperwm@paperwm.github.com"
+          ];
         };
       };
     }
