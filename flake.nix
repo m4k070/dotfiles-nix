@@ -29,7 +29,6 @@
   in {
     nixosConfigurations = {
       sirius = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         modules = [
           ./hosts/sirius/configuration.nix
             home-manager.nixosModules.default
@@ -45,7 +44,6 @@
         ];
       };
       vega =  nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
         modules = [
           ./hosts/vega/configuration.nix
             home-manager.nixosModules.default
