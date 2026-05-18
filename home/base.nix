@@ -19,4 +19,10 @@ in {
   programs.home-manager.enable = true;
 
   news.display = "silent";
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
 }
