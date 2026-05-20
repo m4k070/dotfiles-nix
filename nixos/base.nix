@@ -42,12 +42,15 @@
     LC_TIME = "ja_JP.UTF-8";
   };
 
-  # i18n.inputMethod = {
-  #   enable = true;
-  #   type = "fcitx5";
-  #   fcitx5.waylandFrontend = true;
-  # };
-  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  # GNOMEがデフォルトでIBusを設定するため、システムレベルでfcitx5を明示して上書きする
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.waylandFrontend = true;
+    fcitx5.addons = with pkgs; [
+      fcitx5-skk
+    ];
+  };
  
   fonts = {
     packages = with pkgs; [
