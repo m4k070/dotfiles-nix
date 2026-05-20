@@ -22,6 +22,7 @@
     python314
     remmina
     teams-for-linux
+    warp-terminal
     zoom-us
   ];
 
