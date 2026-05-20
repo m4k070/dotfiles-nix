@@ -98,46 +98,6 @@
         "type": "github"
       }
     },
-    "home-manager_2": {
-      "inputs": {
-        "nixpkgs": [
-          "nix-hazkey",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1778444552,
-        "narHash": "sha256-f18pIiR9q/p1vHY93gmAum7aHhQOG49oGvAB9+lptRo=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "dcebe66f958673729896eec2de4abfd86ef22d21",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "nix-hazkey": {
-      "inputs": {
-        "home-manager": "home-manager_2",
-        "nixpkgs": "nixpkgs_2"
-      },
-      "locked": {
-        "lastModified": 1779161570,
-        "narHash": "sha256-tXi/0qNtpyWh5yfx6pn+xbZyEL1c+h14Lu89wNq/qSw=",
-        "owner": "aster-void",
-        "repo": "nix-hazkey",
-        "rev": "ffcc1ef42a1b59877dba113bc481347b23734fd6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "aster-void",
-        "repo": "nix-hazkey",
-        "type": "github"
-      }
-    },
     "nixgl": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -176,22 +136,6 @@
       }
     },
     "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1777954456,
-        "narHash": "sha256-hGdgeU2Nk87RAuZyYjyDjFL6LK7dAZN5RE9+hrDTkDU=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "549bd84d6279f9852cae6225e372cc67fb91a4c1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
       "locked": {
         "lastModified": 1778869304,
         "narHash": "sha256-30sZNZoA1cqF5JNO9fVX+wgiQYjB7HJqqJ4ztCDeBZE=",
@@ -256,9 +200,8 @@
         "claude-code": "claude-code",
         "hibiki": "hibiki",
         "home-manager": "home-manager",
-        "nix-hazkey": "nix-hazkey",
         "nixgl": "nixgl",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_2",
         "noctalia": "noctalia"
       }
     },

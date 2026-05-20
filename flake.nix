@@ -15,7 +15,6 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-hazkey.url = "github:aster-void/nix-hazkey";
     claude-code.url = "github:sadjow/claude-code-nix";
     hibiki = {
       url = "github:linuxmobile/hibiki";
@@ -23,9 +22,9 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, nix-hazkey, claude-code, hibiki, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, claude-code, hibiki, ... }@inputs:
   let
-    extraSpecialArgs = { inherit nixgl noctalia nix-hazkey claude-code hibiki; };
+    extraSpecialArgs = { inherit nixgl noctalia claude-code hibiki; };
   in {
     nixosConfigurations = {
       sirius = nixpkgs.lib.nixosSystem {

@@ -1,7 +1,6 @@
-{ config, pkgs, noctalia, nix-hazkey, ... }: {
+{ config, pkgs, noctalia, ... }: {
   imports = [
     noctalia.homeModules.default
-    nix-hazkey.homeModules.hazkey
   ];
 
   i18n.inputMethod = {
@@ -14,8 +13,6 @@
   };
 
   services = {
-    hazkey.enable = true;
-
     gnome-keyring.enable = true;
 
     udiskie = {
