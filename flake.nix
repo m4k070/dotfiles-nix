@@ -24,11 +24,12 @@
 
   outputs = { self, nixpkgs, home-manager, nixgl, noctalia, claude-code, hibiki, ... }@inputs:
   let
+    username = "makotoito";
     pkgs = import nixpkgs {
       system = "x86_64-linux";
       config.allowUnfree = true;
     };
-    extraSpecialArgs = { inherit nixgl noctalia claude-code hibiki; };
+    extraSpecialArgs = { inherit nixgl noctalia claude-code hibiki username; };
   in {
     nixosConfigurations = {
       sirius = nixpkgs.lib.nixosSystem {

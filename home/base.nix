@@ -1,7 +1,4 @@
-{ lib, ... }:
-let
-  inherit (import ./options.nix) username;
-in {
+{ lib, username, ... }: {
   imports = [
     ./modules/shell.nix
     ./modules/editor.nix

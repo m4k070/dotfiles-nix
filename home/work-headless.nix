@@ -1,7 +1,4 @@
-{ config, pkgs, ... }:
-let
-  inherit (import ./options.nix) username;
-in {
+{ config, pkgs, username, ... }: {
   imports = [
     ./modules/shell.nix
     ./modules/git.nix
