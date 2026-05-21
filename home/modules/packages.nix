@@ -18,18 +18,14 @@ in {
     dbeaver-bin
     dig
     dotnet-combined
-    eza
     fd
     firefox
     fuzzel
-    fzf
     gcc
     gdb
-    gh
     ghq
     gimp
     github-copilot-cli
-    git
     gnumake
     go-task
     jq
@@ -43,7 +39,6 @@ in {
     rclone
     ripgrep
     sd
-    starship
     #thorium-reader
     udev-gothic
     uv

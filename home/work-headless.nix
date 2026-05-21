@@ -9,6 +9,7 @@ in {
   imports = [
     ./modules/shell.nix
     ./modules/git.nix
+    ./modules/editor-common.nix
   ];
 
   home = {
@@ -87,37 +88,11 @@ in {
     "~/go/bin"
   ];
 
-  # neovimとzellijのみ（VSCodeはGUI環境が必要）
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    withRuby = false;
-    withPython3 = false;
-  };
-
-  programs.zellij = {
-    enable = true;
-    extraConfig = ''
-show_startup_tips false
-theme "kanagawa"
-plugins {
-    tab-bar { path "tab-bar"; }
-    status-bar { path "status-bar"; }
-    strider { path "strider"; }
-    compact-bar { path "compact-bar"; }
-}
-    '';
-  };
+  # 共通エディタ（Neovim / Zellij）は editor-common.nix からインポート
 
   programs.starship.enable = true;
 
   xdg.enable = true;
-  xdg.configFile."nvim" = {
-    source = ../configs/neovim;
-    recursive = true;
-  };
   xdg.configFile."starship.toml".source = ../configs/starship/starship.toml;
 
   programs.git.settings.user.email = lib.mkForce "makoto.ito@tsukasa-ind.co.jp";
@@ -125,12 +100,8 @@ plugins {
   programs.go = {
     enable = true;
     env = {
-      GOPATH = [
-        "${config.home.homeDirectory}/go"
-      ];
-      GOPRIVATE = [
-        "github.com/tsukasa-ind/"
-      ];
+      GOPATH = "${config.home.homeDirectory}/go";
+      GOPRIVATE = "github.com/tsukasa-ind/";
     };
   };
 }

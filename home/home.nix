@@ -7,7 +7,6 @@
     alacritty
     davinci-resolve
     discord
-    ghostty
     heroic
     wezterm
     wlogout

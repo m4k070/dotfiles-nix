@@ -48,12 +48,8 @@
   programs.go = {
     enable = true;
     env = {
-      GOPATH = [
-        "${config.home.homeDirectory}/go"
-      ];
-      GOPRIVATE = [
-        "github.com/tsukasa-ind/"
-      ];
+      GOPATH = "${config.home.homeDirectory}/go";
+      GOPRIVATE = "github.com/tsukasa-ind/";
     };
   };
 
