@@ -24,63 +24,55 @@
 
   outputs = { self, nixpkgs, home-manager, nixgl, noctalia, claude-code, hibiki, ... }@inputs:
   let
+    pkgs = import nixpkgs {
+      system = "x86_64-linux";
+      config.allowUnfree = true;
+    };
     extraSpecialArgs = { inherit nixgl noctalia claude-code hibiki; };
   in {
     nixosConfigurations = {
       sirius = nixpkgs.lib.nixosSystem {
         modules = [
           ./hosts/sirius/configuration.nix
-            home-manager.nixosModules.default
-            {
-              home-manager = {
-                users.makoto = ./home/work.nix;
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                inherit extraSpecialArgs;
-              };
-            }
+          home-manager.nixosModules.default
+          {
+            home-manager = {
+              users.makoto = ./home/work.nix;
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              inherit extraSpecialArgs;
+            };
+          }
         ];
       };
-      vega =  nixpkgs.lib.nixosSystem {
+      vega = nixpkgs.lib.nixosSystem {
         modules = [
           ./hosts/vega/configuration.nix
-            home-manager.nixosModules.default
-            {
-              home-manager = {
-                users.makoto = ./home/home.nix;
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                inherit extraSpecialArgs;
-              };
-            }
+          home-manager.nixosModules.default
+          {
+            home-manager = {
+              users.makoto = ./home/home.nix;
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              inherit extraSpecialArgs;
+            };
+          }
         ];
       };
     };
     homeConfigurations = {
       work = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "x86_64-linux";
-          config.allowUnfree = true;
-        };
-        inherit extraSpecialArgs;
+        inherit pkgs extraSpecialArgs;
         modules = [ ./home/work.nix ];
       };
       home = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "x86_64-linux";
-          config.allowUnfree = true;
-        };
-        inherit extraSpecialArgs;
+        inherit pkgs extraSpecialArgs;
         modules = [ ./home/home.nix ];
       };
       work-headless = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "x86_64-linux";
-          config.allowUnfree = true;
-        };
-        inherit extraSpecialArgs;
+        inherit pkgs extraSpecialArgs;
         modules = [ ./home/work-headless.nix ];
       };
     };

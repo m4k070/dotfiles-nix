@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 let
   inherit (import ./options.nix) username;
 in {
@@ -11,8 +11,9 @@ in {
   ];
 
   home = {
-    username = username;
-    homeDirectory = "/home/${username}";
+    # NixOS統合時に home-manager.users.* が自動設定する値を優先させる
+    username = lib.mkDefault username;
+    homeDirectory = lib.mkDefault "/home/${username}";
     stateVersion = "25.11";
   };
 

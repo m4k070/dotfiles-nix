@@ -1,6 +1,7 @@
-{ config, pkgs, noctalia, nixgl, lib, ... }: {
+{ config, pkgs, noctalia, nixgl, ... }: {
   imports = [
     ./base.nix
+    ./modules/work-common.nix
   ];
 
   # nixGL を使ってGPUドライバーをラップする（非NixOS環境向け）
@@ -13,21 +14,11 @@
   home.packages = with pkgs; [
     (config.lib.nixGL.wrap alacritty)
     (config.lib.nixGL.wrap wezterm)
-    babashka
-    clingo
     libreoffice
-    #mysql80
-    poppler-utils
-    postgresql
-    python314
     remmina
     teams-for-linux
     warp-terminal
     zoom-us
-  ];
-
-  home.sessionPath = [
-    "~/go/bin"
   ];
 
   programs.ghostty = {
@@ -41,18 +32,6 @@
       shell-integration-features = "ssh-env";
     };
   };
-
-  # デフォルトの個人メールアドレスを仕事用にオーバーライド
-  programs.git.settings.user.email = lib.mkForce "makoto.ito@tsukasa-ind.co.jp";
-
-  programs.go = {
-    enable = true;
-    env = {
-      GOPATH = "${config.home.homeDirectory}/go";
-      GOPRIVATE = "github.com/tsukasa-ind/";
-    };
-  };
-
 
   programs.gnome-shell = {
     enable = true;
