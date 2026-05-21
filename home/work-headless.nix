@@ -37,7 +37,6 @@ in {
     fzf
     gcc
     gdb
-    gemini-cli
     gh
     ghq
     git
