@@ -24,7 +24,7 @@
 
   outputs = { self, nixpkgs, home-manager, nixgl, noctalia, claude-code, hibiki, ... }@inputs:
   let
-    username = "makotoito";
+    username = "makoto";
     pkgs = import nixpkgs {
       system = "x86_64-linux";
       config.allowUnfree = true;
