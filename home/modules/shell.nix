@@ -58,7 +58,7 @@
     keyMode = "vi";
     escapeTime = 0;
     clock24 = true;
-    terminal = "screen-256color";
+    terminal = "tmux-256color";
     extraConfig = ''
       # window移動
       bind -n M-l next-window
