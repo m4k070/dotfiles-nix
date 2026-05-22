@@ -71,8 +71,8 @@
         {
           profile.name = "office3";
           profile.outputs = [
-            { criteria = "$INTERNAL"; position = "0,0"; }
-            { criteria = "$OFFICE3"; position = "1920,0"; }
+            { criteria = "$INTERNAL"; position = "1920,0"; }
+            { criteria = "$OFFICE3"; position = "0,0"; }
           ];
         }
         {
