@@ -135,7 +135,7 @@ layout {
     // - "always", the focused column will always be centered.
     // - "on-overflow", focusing a column will center it if it doesn't fit
     //   together with the previously focused column.
-    center-focused-column "always"
+    center-focused-column "on-overflow"
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
     preset-column-widths {
@@ -359,7 +359,7 @@ window-rule {
 window-rule {
     match app-id="firefox"
     match app-id="vivaldi-stable"
-    default-column-width { proportion 0.66667; }
+    default-column-width { proportion 0.8; }
 }
 
 // Work around WezTerm's initial configure bug
@@ -374,6 +374,11 @@ window-rule {
 
 /-window-rule {
     match app-id="discord"
+}
+
+window-rule {
+    match app-id="ghostty"
+    default-column-width { proportion 0.5; }
 }
 
 // fcitx5のポップアップ（"Fcitx5 Input Window", app-id="fcitx"）がフォーカスを
