@@ -376,6 +376,11 @@ window-rule {
     match app-id="discord"
 }
 
+window-rule {
+    match app-id="ghostty"
+    default-column-width { proportion 0.5; }
+}
+
 // fcitx5のポップアップ（"Fcitx5 Input Window", app-id="fcitx"）がフォーカスを
 // 奪ってghosttyの入力が途切れるのを防ぐ。
 window-rule {
