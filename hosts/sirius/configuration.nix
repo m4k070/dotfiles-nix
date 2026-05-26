@@ -40,7 +40,7 @@
     openFirewall = true;
   };
 
-  # RICOH IM C3500F（IPP Everywhere対応のためドライバー不要）
+  # RICOH IM C3510F（IPP Everywhere対応のためドライバー不要）
   hardware.printers = {
     ensurePrinters = [{
       name = "RICOH_IM_C3510F";
@@ -53,7 +53,7 @@
         PageSize = "A4";
       };
     }];
-    ensureDefaultPrinter = "RICOH_IM_C3500F";
+    ensureDefaultPrinter = "RICOH_IM_C3510F";
   };
 
 }
