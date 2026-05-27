@@ -79,6 +79,11 @@
       # スクロールアップするとコピーモードに入る
       bind-key -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'select-pane -t=; copy-mode -e; send-keys -M'"
 
+      # コピーをwayland対応
+      bind-key    -T copy-mode-vi v     send-keys -X begin-selection
+      bind-key    -T copy-mode-vi y     send-keys -X copy-pipe-and-cancel "wl-copy"
+      bind-key    -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "wl-copy"
+
       # 最後までスクロールダウンするとコピーモードを抜ける
       bind-key -n WheelDownPane select-pane -t= \; send-keys -M
 

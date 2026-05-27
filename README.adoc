@@ -1,15 +1,86 @@
-== NixOS rebuild
+= dotfiles-nix
 
-create symbolic link to `/etc/nixos`
+NixOS + home-manager による設定管理リポジトリ。
 
+== ホスト
+
+[cols="1,1,2"]
+|===
+|ホスト |用途 |homeConfigurations
+
+|sirius
+|仕事用PC
+|work
+
+|vega
+|個人用PC
+|home
+|===
+
+`work-headless` はデスクトップ環境なしの仕事用プロファイル。
+
+== ディレクトリ構成
+
+----
+.
+├── flake.nix               # inputs/outputs定義
+├── hosts/
+│   ├── sirius/             # sirius固有設定（configuration + hardware）
+│   └── vega/               # vega固有設定（configuration + hardware）
+├── home/
+│   ├── home.nix            # vega向けhome-managerプロファイル
+│   ├── work.nix            # sirius向けhome-managerプロファイル
+│   ├── work-headless.nix   # ヘッドレス環境向けプロファイル
+│   ├── base.nix            # 共通modulesのimport
+│   └── modules/
+│       ├── shell.nix       # zsh/tmux/direnv/fzf/eza/zoxide/sheldon
+│       ├── editor.nix      # neovim/vscode/zellij
+│       ├── editor-common.nix
+│       ├── git.nix         # git/gh（メールはlib.mkDefault）
+│       ├── desktop.nix     # GTK/kanshi/udiskie/i18n/starship/vivaldi
+│       ├── packages.nix    # home.packages
+│       ├── packages-common.nix
+│       └── work-common.nix
+├── nixos/
+│   ├── base.nix            # 共通NixOS設定
+│   ├── gnome.nix
+│   ├── mako/
+│   ├── niri/
+│   ├── starship/
+│   ├── waybar/
+│   └── yazi/
+└── katrain-nix/            # KaTrain用overlayパッケージ
+----
+
+== flake inputs
+
+* `nixpkgs` — nixos-unstable
+* `home-manager`
+* `nixgl` — 非NixOS環境向けGPUラッパー
+* `noctalia` — noctalia-shell
+* `claude-code` — claude-code-nix
+* `hibiki`
+
+== よく使うコマンド
+
+=== NixOS再ビルド
+
+[source,bash]
 ----
 sudo nixos-rebuild switch --flake .#
 ----
 
-== Folders
+=== home-manager適用
 
-hosts :: machine specify settings
+[source,bash]
+----
+home-manager switch --flake .#<profile>
+# 例: home-manager switch --flake .#work
+----
 
-home :: home-manager settings
+=== 評価チェック（ビルドなし）
 
-nixos :: base nixOS setting
+[source,bash]
+----
+nix flake check --no-build
+----

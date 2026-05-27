@@ -191,6 +191,7 @@
     papirus-icon-theme
     pavucontrol
     usbutils
+    wl-clipboard
   ];
 
   nixpkgs.config.allowUnfree = true;
