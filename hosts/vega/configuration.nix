@@ -24,7 +24,6 @@
     gamescope
     (pkgs.katago.override { backend = "cuda"; })
     katrain
-    pipx
     protonup-qt
     sunshine
   ];
