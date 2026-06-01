@@ -14,6 +14,7 @@
     microsoft-edge
     niri
     obsidian
+    platformio
     udev-gothic
     vivaldi-ffmpeg-codecs
     xwayland-satellite
