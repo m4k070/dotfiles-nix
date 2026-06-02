@@ -33,10 +33,8 @@
     };
   };
 
-  programs.gnome-shell = {
-    enable = true;
-    extensions = [
-      { package = pkgs.gnomeExtensions.paperwm; }
-    ];
-  };
+  # appindicator は desktop.nix で管理
+  programs.gnome-shell.extensions = [
+    { package = pkgs.gnomeExtensions.paperwm; }
+  ];
 }

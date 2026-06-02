@@ -11,21 +11,6 @@
     gnome-initial-setup
   ];
   services.udev.packages = with pkgs; [ gnome-settings-daemon ];
-  environment.systemPackages = with pkgs; [
-    gnomeExtensions.paperwm
-    gnomeExtensions.appindicator
-  ];
+  # GNOME 拡張機能のパッケージ・有効化は home-manager の programs.gnome-shell で管理する
   programs.dconf.enable = true;
-  programs.dconf.profiles.user.databases = [
-    {
-      settings = {
-        "org/gnome/shell" = {
-          enabled-extensions = [
-            "appindicatorsupport@rgcjonas.gmail.com"
-            "paperwm@paperwm.github.com"
-          ];
-        };
-      };
-    }
-  ];
 }

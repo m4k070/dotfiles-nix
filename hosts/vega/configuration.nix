@@ -13,18 +13,24 @@
     ];
   nixpkgs.overlays = [
     (import ../../katrain-nix/katrain-overlay.nix)
+    (final: prev: {
+      # nixpkgs-unstable バグ回避: writers/scripts.nix の makePythonWriter が
+      # `pythonPackages != pkgs.pypy2Packages || pythonPackages != pkgs.pypy3Packages` を
+      # 評価する際に pypy2/pypy3 パッケージが強制評価されるが、pypy は i686-linux 非対応。
+      # 32bit コンテキストで pypy 系パッケージをスタブ化することで評価エラーを防ぐ。
+      pkgsi686Linux = prev.pkgsi686Linux.extend (_: _: {
+        pypy2 = builtins.throw "pypy2 is not available on i686-linux";
+        pypy3 = builtins.throw "pypy3 is not available on i686-linux";
+        pypy = builtins.throw "pypy is not available on i686-linux";
+        pypy2Packages = { };
+        pypy3Packages = { };
+      });
+    })
   ];
 
   networking.hostName = "vega"; # Define your hostname.
 
   environment.systemPackages = with pkgs; [
-    android-tools
-    gnomeExtensions.gsconnect
-    cudaPackages.cudatoolkit
-    gamescope
-    (pkgs.katago.override { backend = "cuda"; })
-    katrain
-    protonup-qt
     sunshine
   ];
 

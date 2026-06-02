@@ -150,6 +150,14 @@
   xdg.enable = true;
   xdg.mime.enable = true;
 
+  # GNOME 拡張機能（両ホスト共通）
+  programs.gnome-shell = {
+    enable = true;
+    extensions = [
+      { package = pkgs.gnomeExtensions.appindicator; }
+    ];
+  };
+
   xdg.configFile."niri/config.kdl".source = ../../configs/niri/config.kdl;
   xdg.configFile."starship.toml".source = ../../configs/starship/starship.toml;
 

@@ -8,15 +8,22 @@
     bitwarden-desktop
     blender
     dbeaver-bin
+    ffmpeg-headless
+    ffmpegthumbnailer
     firefox
     fuzzel
     gimp
     microsoft-edge
+    nautilus
+    networkmanagerapplet
     niri
+    nwg-look
     obsidian
+    pavucontrol
     platformio
     udev-gothic
     vivaldi-ffmpeg-codecs
+    wl-clipboard
     xwayland-satellite
   ];
 }

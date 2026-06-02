@@ -169,32 +169,22 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-    #mako
-    catppuccin-cursors.latteDark
-    everforest-cursors
-    ffmpeg-headless
-    ffmpegthumbnailer
-    gdk-pixbuf
-    gh
-    git
-    kanagawa-gtk-theme
-    kanagawa-icon-theme
-    libheif
+    gdk-pixbuf   # システム全体の GDK pixbuf ローダー（GTK サムネイル等）
+    libheif      # HEIF/HEIC コーデック（システム全体のファイルタイプ処理）
     libheif.out
-    nautilus
-    networkmanagerapplet
-    nwg-look
-    openssh
     openssl_3
-    papirus-icon-theme
-    pavucontrol
     usbutils
-    wl-clipboard
   ];
 
   nixpkgs.config.allowUnfree = true;
+  # EOL パッケージを一時的に許可（upstream の更新待ち）
+  # - electron-39.8.10: obsidian が依存
+  # - pypy2.7-setuptools-44.0.0: sunshine → resholve が依存
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-39.8.10"
+    "pypy2.7-setuptools-44.0.0"
+    "pypy2.7-pip-20.3.4"
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -210,6 +200,7 @@
   networking.firewall = {
     enable = true;
     trustedInterfaces = [ "docker0" "tailscale0" ];
+    allowedTCPPorts = [ 3456 ];
     allowedUDPPorts = [config.services.tailscale.port];
   };
 

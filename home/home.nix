@@ -5,12 +5,23 @@
 
   home.packages = with pkgs; [
     alacritty
+    android-tools
+    cudaPackages.cudatoolkit
     davinci-resolve
     discord
+    gamescope
     heroic
+    (katago.override { backend = "cuda"; })
+    katrain
+    protonup-qt
     wezterm
     wlogout
     xdg-user-dirs
+  ];
+
+  # gsconnect は vega の kdeconnect システム統合と連携する GNOME 拡張
+  programs.gnome-shell.extensions = [
+    { package = pkgs.gnomeExtensions.gsconnect; }
   ];
 
   home.file.".config/sunshine/apps.json" = {
