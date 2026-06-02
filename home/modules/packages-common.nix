@@ -10,7 +10,7 @@ in {
     bitwarden-cli
     btop
     claude-code.packages.${pkgs.system}.default
-    hibiki.packages.${pkgs.system}.default
+    #hibiki.packages.${pkgs.system}.default
     cmake
     curl
     dig

@@ -16,6 +16,7 @@
     obsidian
     platformio
     udev-gothic
+    ventoy
     vivaldi-ffmpeg-codecs
     xwayland-satellite
   ];
