@@ -32,6 +32,9 @@ plugins {
     enable = true;
     # pgtk ビルド: Wayland (niri) ネイティブ対応
     package = pkgs.emacs-pgtk;
+    # ネイティブモジュールが必要なパッケージをnixでビルド済みにする
+    # → Doom起動時のコンパイルが不要になる
+    extraPackages = epkgs: [ epkgs.vterm ];
   };
 
   # Doom 設定ファイルを ~/.config/doom/ に配置

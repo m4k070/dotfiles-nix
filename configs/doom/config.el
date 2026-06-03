@@ -56,11 +56,64 @@
 ;; <F12>: 定義へジャンプ (neovim: vim.lsp.buf.definition / doom: g d と同等)
 (map! :n "<F12>" #'lsp-find-definition)
 
-;;; Treemacs (neo-tree設定の移植)
+;;; Treemacs (VSCode サイドバーライク設定)
+;; 参考: https://apribase.net/2024/06/01/emacs-treemacs-like-vscode/
 (after! treemacs
   (setq treemacs-width 30
-        treemacs-follow-mode t
-        treemacs-filewatch-mode t))
+        ;; VSCode のようにサイドバーのフォントを1段階小さく
+        treemacs-text-scale -1
+        treemacs-git-executable (executable-find "git")
+        ;; 永続ファイルを XDG データディレクトリに移動
+        treemacs-persist-file
+        (expand-file-name "~/.local/share/emacs/treemacs/persist.org")
+        treemacs-last-error-persist-file
+        (expand-file-name "~/.local/share/emacs/treemacs/persist-last-error.org"))
+
+  ;; シングルクリックでファイルを開く (VSCode デフォルト)
+  (define-key treemacs-mode-map [mouse-1] #'treemacs-single-click-expand-action)
+  ;; r でリネーム
+  (define-key treemacs-mode-map "r" #'treemacs-rename-file)
+
+  ;; シングルクリック後もフォーカスをTreemacsに残す (VSCode挙動)
+  (defun my-treemacs-keep-focus (&rest _)
+    (select-window (treemacs-get-local-window)))
+  (advice-add 'treemacs-single-click-expand-action :after #'my-treemacs-keep-focus)
+
+  ;; 右フリンジの継続・切り詰め矢印を非表示 (VSCode like)
+  (defun my-treemacs-hide-fringe-indicators ()
+    (setq-local fringe-indicator-alist
+                (let ((alist (copy-tree fringe-indicator-alist)))
+                  (setf (cdr (assq 'truncation alist)) '(nil nil)
+                        (cdr (assq 'continuation alist)) '(nil nil))
+                  alist)))
+  (add-hook 'treemacs-mode-hook #'my-treemacs-hide-fringe-indicators)
+
+  ;; プロジェクト単位の自動追従・ファイル監視・git状態表示
+  (treemacs-project-follow-mode 1)
+  (treemacs-filewatch-mode 1)
+  (treemacs-git-mode 'simple)
+
+  ;; ファイル無視リスト (node_modules, .direnv 等)
+  (push (lambda (file _)
+          (or (string= file ".clj-kondo")
+              (string= file ".direnv")
+              (string= file ".lsp")
+              (string= file "node_modules")
+              (string= file ".pre-commit-config.yaml")
+              (string= file ".shadow-cljs")))
+        treemacs-ignored-file-predicates))
+
+;; nerd-icons テーマ (テキストスケール変更時もアイコンサイズが連動する)
+(use-package! treemacs-nerd-icons
+  :after (treemacs nerd-icons)
+  :config
+  (treemacs-load-theme "nerd-icons"))
+
+;; dired にも treemacs アイコンを適用
+(use-package! treemacs-icons-dired
+  :after (treemacs dired)
+  :config
+  (treemacs-icons-dired-mode 1))
 
 ;;; LSP
 (after! lsp-mode
