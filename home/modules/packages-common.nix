@@ -1,4 +1,4 @@
-{ pkgs, claude-code, hibiki, ... }:
+{ pkgs, lib, claude-code, hibiki, ... }:
 let
   dotnet-combined = with pkgs.dotnetCorePackages; combinePackages [
     sdk_8_0
@@ -17,7 +17,7 @@ in {
     dotnet-combined
     fd
     gcc
-    gdb
+    (lib.lowPrio gdb)
     ghq
     github-copilot-cli
     gnumake
