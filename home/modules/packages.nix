@@ -5,7 +5,7 @@
 
   # デスクトップ専用パッケージ
   home.packages = with pkgs; [
-    bitwarden-desktop
+    _1password-cli
     blender
     dbeaver-bin
     ffmpeg-headless
