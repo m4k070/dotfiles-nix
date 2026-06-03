@@ -109,12 +109,6 @@
   :config
   (treemacs-load-theme "nerd-icons"))
 
-;; dired にも treemacs アイコンを適用
-(use-package! treemacs-icons-dired
-  :after (treemacs dired)
-  :config
-  (treemacs-icons-dired-mode 1))
-
 ;;; LSP
 (after! lsp-mode
   ;; neovim の mason に相当するサーバーは nix (packages-common.nix) で管理済み

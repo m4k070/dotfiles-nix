@@ -12,6 +12,3 @@
 
 ;; treemacs-nerd-icons: アイコンフォント使用でテキストスケールに追従
 (package! treemacs-nerd-icons)
-
-;; treemacs-icons-dired: dired にも treemacs アイコンを適用
-(package! treemacs-icons-dired)
