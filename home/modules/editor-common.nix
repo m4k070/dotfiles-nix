@@ -43,6 +43,18 @@ plugins {
     recursive = true;
   };
 
+  # Emacs 29+ treesit grammars: TypeScript/JavaScript用
+  # Doom :lang (javascript +tree-sitter) が typescript-ts-mode を使うために必要
+  # linkFarm が lib/libtree-sitter-<lang>.so を作成し、emacs/tree-sitter/ からロードされる
+  xdg.configFile."emacs/tree-sitter" = {
+    source = "${pkgs.emacs-pgtk.pkgs.treesit-grammars.with-grammars (g: with g; [
+      tree-sitter-javascript
+      tree-sitter-jsdoc
+      tree-sitter-tsx
+      tree-sitter-typescript
+    ])}/lib";
+  };
+
   # Doom Emacs 本体の初回セットアップ案内
   # activation スクリプトでの git clone はsystemd制限環境でSSHが使えないため手動で実行する
   home.activation.installDoom = lib.hm.dag.entryAfter [ "writeBoundary" ] ''

@@ -44,8 +44,15 @@
 ;;   g d / <F12> →  lsp-find-definition
 ;;   SPC c r     →  lsp-rename
 
-;; <C-n>: ファイルツリー (neo-tree の <C-n> 相当)
-(map! :n "C-n" #'treemacs)
+;; <C-n>: ファイルツリーを表示してフォーカス
+(map! :n "C-n" #'treemacs-select-window)
+
+;; <C-S-n>: ファイルツリーを非表示
+(defun my-treemacs-hide ()
+  (interactive)
+  (when-let ((win (treemacs-get-local-window)))
+    (delete-window win)))
+(map! :n "C-S-n" #'my-treemacs-hide)
 
 ;; <C-`>: フローティングターミナル (toggleterm の <C-`> 相当)
 (map! :n "C-`" #'+vterm/toggle)
