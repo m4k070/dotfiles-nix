@@ -19,6 +19,7 @@
     niri
     nwg-look
     obsidian
+    opencode
     pavucontrol
     platformio
     udev-gothic
