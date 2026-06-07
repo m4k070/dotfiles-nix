@@ -26,9 +26,11 @@ in {
     lazygit
     mise
     nb
+    platformio
     postgresql
     rclone
     ripgrep
+    rtk
     sd
     uv
     whois

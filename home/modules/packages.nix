@@ -21,7 +21,6 @@
     obsidian
     opencode
     pavucontrol
-    platformio
     udev-gothic
     vivaldi-ffmpeg-codecs
     wl-clipboard
