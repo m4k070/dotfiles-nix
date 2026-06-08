@@ -19,7 +19,6 @@
     niri
     nwg-look
     obsidian
-    opencode
     pavucontrol
     udev-gothic
     vivaldi-ffmpeg-codecs

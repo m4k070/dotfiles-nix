@@ -26,6 +26,7 @@ in {
     lazygit
     mise
     nb
+    opencode
     platformio
     postgresql
     rclone
