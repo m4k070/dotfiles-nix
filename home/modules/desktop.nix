@@ -129,7 +129,7 @@
     size = 24;
   };
 
-  programs.noctalia-shell = {
+  programs.noctalia = {
     enable = true;
     systemd.enable = false;
   };
