@@ -1,0 +1,87 @@
+;; Thinkpad keyboard keymap with home row mods
+;; Based on Corne v4 layout (corne_v4.layout.json)
+;; Home row mods: A=Ctrl, S=Alt, D=Gui, F=Ctrl | J=Ctrl, K=Gui, L=Alt, ;=Ctrl
+
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  prtsc slck pause
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc ins  home pgup
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    del  end  pgdn
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft up
+  lctl lmet lalt           spc            ralt rmet rctl left down rght
+)
+
+(defalias
+  ;; Home row mods
+  a-hold (tap-hold 200 200 a lctl)
+  s-hold (tap-hold 200 200 s lalt)
+  d-hold (tap-hold 200 200 d lmet)
+  f-hold (tap-hold 200 200 f lctl)
+  j-hold (tap-hold 200 200 j lctl)
+  k-hold (tap-hold 200 200 k lmet)
+  l-hold (tap-hold 200 200 l lalt)
+  semicolon-hold (tap-hold 200 200 ; lctl)
+
+  ;; Shifted keys for symbols layer
+  exclam S-1
+  at S-2
+  hash S-3
+  dollar S-4
+  percent S-5
+  asciicircum S-6
+  ampersand S-7
+  asterisk S-8
+  lparen S-9
+  rparen S-0
+  underscore S--
+  plus S-=
+  braceleft S-[
+  braceright S-]
+  bar S-\
+  colon S-;
+  dquote S-'
+  less S-,
+  greater S-.
+  question S-/
+  tilde S-`
+)
+
+(deflayer base
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  prtsc slck pause
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc ins  home pgup
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    del  end  pgdn
+  caps @a-hold @s-hold @d-hold @f-hold g h @j-hold @k-hold @l-hold @semicolon-hold ' ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft up
+  lctl lmet lalt           spc            ralt rmet rctl left down rght
+)
+
+(deflayer symbols
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  prtsc slck pause
+  @tilde @exclam @at @hash @dollar @percent @asciicircum @ampersand @asterisk @lparen @rparen @underscore @plus bspc ins  home pgup
+  tab  q    w    e    r    t    y    u    i    o    p    @braceleft @braceright @bar del  end  pgdn
+  caps a    s    d    f    g    h    j    k    l    @colon @dquote ret
+  lsft z    x    c    v    b    n    m    @less @greater @question rsft up
+  lctl lmet lalt           spc            ralt rmet rctl left down rght
+)
+
+(deflayer nav
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  prtsc slck pause
+  grv  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  bspc ins  home pgup
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    del  end  pgdn
+  caps a    s    d    f    g    left down up   rght ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft pgup
+  lctl lmet lalt           spc            ralt rmet rctl home pgdn end
+)
+
+(deflayer fn
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  prtsc slck pause
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc ins  home pgup
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    del  end  pgdn
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft up
+  lctl lmet lalt           spc            ralt rmet rctl left down rght
+)
