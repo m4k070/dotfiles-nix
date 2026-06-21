@@ -7,7 +7,7 @@
 ;;; Appearance
 
 ;; フォント (packages.nix の udev-gothic を使用)
-(setq doom-font (font-spec :family "UDEV Gothic" :size 14)
+(setq doom-font (font-spec :family "UDEV Gothic" :size 15)
       doom-variable-pitch-font (font-spec :family "UDEV Gothic" :size 15))
 
 ;; Kanagawa テーマ (kanagawa.nvimと統一, doom sync後に有効)
