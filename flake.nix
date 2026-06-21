@@ -20,20 +20,16 @@
       url = "github:linuxmobile/hibiki";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hermes-agent = {
-      url = "github:NousResearch/hermes-agent";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, claude-code, hibiki, hermes-agent, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, claude-code, hibiki, ... }@inputs:
   let
     username = "makoto";
     pkgs = import nixpkgs {
       system = "x86_64-linux";
       config.allowUnfree = true;
     };
-    extraSpecialArgs = { inherit nixgl noctalia claude-code hibiki hermes-agent username; };
+    extraSpecialArgs = { inherit nixgl noctalia claude-code hibiki username; };
   in {
     nixosConfigurations = {
       sirius = nixpkgs.lib.nixosSystem {
@@ -54,7 +50,6 @@
       vega = nixpkgs.lib.nixosSystem {
         modules = [
           ./hosts/vega/configuration.nix
-          hermes-agent.nixosModules.default
           home-manager.nixosModules.default
           {
             home-manager = {

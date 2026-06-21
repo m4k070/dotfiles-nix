@@ -148,7 +148,7 @@
   users.users.makoto = {
     isNormalUser = true;
     description = "makoto";
-    extraGroups = [ "networkmanager" "wheel" "docker" "scanner" "lp" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "scanner" "lp" "dialout" ];
     packages = with pkgs; [
     #  thunderbird
     ];

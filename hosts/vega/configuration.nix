@@ -79,23 +79,4 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
-
-  services.hermes-agent = {
-    enable = true;
-    addToSystemPackages = true;
-    environmentFiles = [ "/var/lib/hermes/env" ];
-    settings = {
-      model = {
-        base_url = "https://opencode.ai/zen/v1";
-        default = "opencode/big-pickle";
-      };
-      toolsets = [ "all" ];
-      terminal.backend = "local";
-      display.compact = false;
-      memory = {
-        memory_enabled = true;
-        user_profile_enabled = true;
-      };
-    };
-  };
 }
