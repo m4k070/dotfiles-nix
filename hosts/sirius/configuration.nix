@@ -34,6 +34,8 @@
     enable = true;
   };
 
+  programs.mangowc.enable = true;
+
   # ネットワークプリンター自動検出（mDNS）
   services.avahi = {
     enable = true;
