@@ -1,99 +1,160 @@
--- Hyprland Configuration (Lua) - Minimal Working Config
+-- Hyprland Configuration (Lua)
+-- Based on official example: https://github.com/hyprwm/Hyprland/blob/main/example/hyprland.lua
 
--- Autostart
-hl.on("hyprland.start", function()
-  hl.exec_cmd("noctalia")
-  hl.exec_cmd("fcitx5 -d")
-end)
+---------------------
+---- MY PROGRAMS ----
+---------------------
 
--- Configuration
+local terminal    = "ghostty"
+local fileManager = "dolphin"
+local menu        = "fuzzel"
+
+-----------------------
+---- LOOK AND FEEL ----
+-----------------------
+
 hl.config({
-  general = {
-    gaps_in = 5,
-    gaps_out = 10,
-    border_size = 4,
-    ["col.active_border"] = "0xc9b890ff",
-    ["col.inactive_border"] = "0x444444ff",
-    layout = "dwindle",
-  },
-  decoration = {
-    rounding = 6,
-    drop_shadow = false,
-    blur = { enabled = false },
-    active_opacity = 1.0,
-    inactive_opacity = 1.0,
-  },
-  animations = {
-    enabled = true,
-  },
-  input = {
-    kb_options = "",
-    repeat_rate = 25,
-    repeat_delay = 600,
-    follow_mouse = 1,
-    touchpad = {
-      natural_scroll = true,
-      tap_to_click = true,
+    general = {
+        gaps_in  = 5,
+        gaps_out = 10,
+        border_size = 4,
+
+        col = {
+            active_border   = "0xc9b890ff",
+            inactive_border = "0x444444ff",
+        },
+
+        resize_on_border = false,
+        allow_tearing = false,
+        layout = "dwindle",
     },
-  },
-  misc = {
-    force_default_wallpaper = 0,
-  },
-  binds = {
-    workspace_back_and_forth = true,
-  },
+
+    decoration = {
+        rounding       = 6,
+        active_opacity   = 1.0,
+        inactive_opacity = 1.0,
+
+        shadow = {
+            enabled = false,
+        },
+
+        blur = {
+            enabled = false,
+        },
+    },
+
+    animations = {
+        enabled = true,
+    },
 })
 
--- Key Bindings
--- Reload config
-hl.bind("SUPER + R", hl.dsp.exec_cmd("hyprctl reload"))
+---------------
+---- INPUT ----
+---------------
+
+hl.config({
+    input = {
+        kb_options = "",
+        repeat_rate = 25,
+        repeat_delay = 600,
+        follow_mouse = 1,
+        sensitivity = 0,
+
+        touchpad = {
+            natural_scroll = true,
+            tap_to_click = true,
+        },
+    },
+})
+
+hl.config({
+    misc = {
+        force_default_wallpaper = 0,
+    },
+})
+
+hl.config({
+    binds = {
+        workspace_back_and_forth = true,
+    },
+})
+
+hl.config({
+    dwindle = {
+        preserve_split = true,
+    },
+})
+
+---------------------
+---- KEYBINDINGS ----
+---------------------
+
+local mainMod = "SUPER"
 
 -- Launch apps
-hl.bind("SUPER + T", hl.dsp.exec_cmd("ghostty"))
-hl.bind("SUPER + D", hl.dsp.exec_cmd("fuzzel"))
-hl.bind("SUPER + ALT + L", hl.dsp.exec_cmd("noctalia msg session lock"))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("hyprctl reload"))
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("noctalia msg session lock"))
 
--- Window management (using direct dispatchers)
-hl.bind("SUPER + Q", hl.dsp.window.close)
-hl.bind("SUPER + SHIFT + E", hl.dsp.exit())
-hl.bind("SUPER + SHIFT + F", hl.dsp.window.fullscreen)
-hl.bind("SUPER + V", hl.dsp.window.float)
-hl.bind("SUPER + F", hl.dsp.window.fullscreen)
+-- Window management
+hl.bind(mainMod .. " + C", hl.dsp.window.close())
+hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit())
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen())
+hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 
--- Focus movement (using hyprctl dispatch for compatibility)
-hl.bind("SUPER + H", hl.dsp.exec_cmd("hyprctl dispatch movefocus l"))
-hl.bind("SUPER + J", hl.dsp.exec_cmd("hyprctl dispatch movefocus d"))
-hl.bind("SUPER + K", hl.dsp.exec_cmd("hyprctl dispatch movefocus u"))
-hl.bind("SUPER + L", hl.dsp.exec_cmd("hyprctl dispatch movefocus r"))
+-- Focus movement
+hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
 
--- Workspace navigation
-hl.bind("SUPER + U", hl.dsp.exec_cmd("hyprctl dispatch workspace e-1"))
-hl.bind("SUPER + I", hl.dsp.exec_cmd("hyprctl dispatch workspace e+1"))
-
--- Direct workspace access
+-- Switch workspaces
 for i = 1, 9 do
-  hl.bind("SUPER + " .. tostring(i), hl.dsp.exec_cmd("hyprctl dispatch workspace " .. tostring(i)))
+    hl.bind(mainMod .. " + " .. tostring(i), hl.dsp.focus({ workspace = i }))
 end
 
+-- Workspace navigation
+hl.bind(mainMod .. " + U", hl.dsp.focus({ workspace = "e-1" }))
+hl.bind(mainMod .. " + I", hl.dsp.focus({ workspace = "e+1" }))
+
+-- Scroll through workspaces
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+
+-- Move/resize windows with mouse
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
 -- Media keys
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"), { repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"), { repeating = true })
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"), { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"), { locked = true, repeating = true })
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 
 -- Screenshot
 hl.bind("PRINT", hl.dsp.exec_cmd("grimblast save output"))
 
--- Window rules
+--------------------------------
+---- WINDOWS AND WORKSPACES ----
+--------------------------------
+
 hl.window_rule({
-  match = { class = "Bitwarden" },
-  float = true,
+    name  = "float-bitwarden",
+    match = { class = "Bitwarden" },
+    float = true,
 })
+
 hl.window_rule({
-  match = { title = "Picture%-in%-Picture" },
-  float = true,
+    name  = "float-pip",
+    match = { title = "Picture%-in%-Picture" },
+    float = true,
 })
+
 hl.window_rule({
-  match = { class = "fcitx" },
-  float = true,
+    name  = "float-fcitx",
+    match = { class = "fcitx" },
+    float = true,
 })

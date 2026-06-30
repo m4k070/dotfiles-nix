@@ -142,12 +142,10 @@
   wayland.windowManager.hyprland = {
     enable = true;
     configType = "lua";
-    settings = {
-      source = [
-        "../../configs/hypr/hyprland.lua"
-      ];
-    };
+    settings = {};
   };
+
+  xdg.configFile."hypr/hyprland.lua".source = ../../configs/hypr/hyprland.lua;
 
   programs.starship = {
     enable = true;
