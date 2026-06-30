@@ -37,7 +37,7 @@ NixOS + home-manager による設定管理リポジトリ。
 │       ├── editor.nix      # neovim/vscode/zellij
 │       ├── editor-common.nix
 │       ├── git.nix         # git/gh（メールはlib.mkDefault）
-│       ├── desktop.nix     # GTK/kanshi/udiskie/i18n/starship/vivaldi
+│       ├── desktop.nix     # GTK/hyprland/kanshi/udiskie/i18n/starship/vivaldi
 │       ├── packages.nix    # home.packages
 │       ├── packages-common.nix
 │       └── work-common.nix
