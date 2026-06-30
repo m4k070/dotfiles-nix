@@ -141,6 +141,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    configType = "lua";
     settings = {
       source = [
         "../../configs/hypr/hyprland.lua"
