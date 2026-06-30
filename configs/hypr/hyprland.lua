@@ -9,6 +9,15 @@ local terminal    = "ghostty"
 local fileManager = "dolphin"
 local menu        = "fuzzel"
 
+-------------------
+---- AUTOSTART ----
+-------------------
+
+hl.on("hyprland.start", function()
+  hl.exec_cmd("noctalia")
+  hl.exec_cmd("fcitx5 -d")
+end)
+
 -----------------------
 ---- LOOK AND FEEL ----
 -----------------------
