@@ -109,6 +109,7 @@ hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exit())
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
+hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 
 -- Focus movement (arrows)
 hl.bind(mainMod .. " + LEFT", hl.dsp.focus({ direction = "left" }))
@@ -147,7 +148,7 @@ hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "right" }))
 
 -- Make active window main tile
-hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd("hyprctl dispatch movewindoworgroup main"))
+hl.bind(mainMod .. " + RETURN", hl.dsp.layout("movetoroot"))
 
 -- Workspace navigation
 hl.bind(mainMod .. " + U", hl.dsp.focus({ workspace = "e-1" }))
@@ -201,7 +202,9 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl --class=backligh
 hl.bind("PRINT", hl.dsp.exec_cmd("grimblast save output"))
 
 -- Toggle layout
-hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("hyprctl dispatch switchlayout next"))
+hl.bind(mainMod .. " + SPACE", hl.dsp.layout("togglesplit"))
+hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.layout("rotatesplit"))
+hl.bind(mainMod .. " + CTRL + SPACE", hl.dsp.layout("splitratio 1.0 exact"))
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
