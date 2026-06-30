@@ -30,11 +30,13 @@
     enable = true;
   };
 
-  programs.niri = {
+  programs.hyprland = {
     enable = true;
   };
 
-  programs.mangowc.enable = true;
+  programs.niri = {
+    enable = true;
+  };
 
   # ネットワークプリンター自動検出（mDNS）
   services.avahi = {
