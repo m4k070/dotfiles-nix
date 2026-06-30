@@ -143,7 +143,7 @@
     enable = true;
     settings = {
       source = [
-        "../../configs/hypr/hyprland.conf"
+        "../../configs/hypr/hyprland.lua"
       ];
     };
   };
