@@ -1,7 +1,6 @@
-{ config, pkgs, noctalia, mango, ... }: {
+{ config, pkgs, noctalia, ... }: {
   imports = [
     noctalia.homeModules.default
-    mango.hmModules.mango
   ];
 
   home.packages = with pkgs; [

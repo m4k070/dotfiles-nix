@@ -15,10 +15,6 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mango = {
-      url = "github:mangowm/mango";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     claude-code.url = "github:sadjow/claude-code-nix";
     hibiki = {
       url = "github:linuxmobile/hibiki";
@@ -26,14 +22,14 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, mango, claude-code, hibiki, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, claude-code, hibiki, ... }@inputs:
   let
     username = "makoto";
     pkgs = import nixpkgs {
       system = "x86_64-linux";
       config.allowUnfree = true;
     };
-    extraSpecialArgs = { inherit nixgl noctalia mango claude-code hibiki username; };
+    extraSpecialArgs = { inherit nixgl noctalia claude-code hibiki username; };
   in {
     nixosConfigurations = {
       sirius = nixpkgs.lib.nixosSystem {
