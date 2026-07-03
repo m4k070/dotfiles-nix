@@ -127,6 +127,15 @@
   xdg.configFile."niri/config.kdl".source = ../../configs/niri/config.kdl;
   xdg.configFile."starship.toml".source = ../../configs/starship/starship.toml;
 
+  # fcitx5-skkの辞書リスト。デフォルト(メイン辞書+ユーザー辞書)に絵文字辞書(skkDictionaries.emoji)を追加する。
+  # このファイルは$XDG_DATA_HOME側で標準のdictionary_listを上書きするため、
+  # デフォルトの2エントリも明示的に含める必要がある。
+  xdg.dataFile."fcitx5/skk/dictionary_list".text = ''
+    type=file,file=$FCITX_CONFIG_DIR/skk/user.dict,mode=readwrite
+    type=file,file=${pkgs.skkDictionaries.l}/share/skk/SKK-JISYO.L,mode=readonly
+    type=file,file=${pkgs.skkDictionaries.emoji}/share/skk/SKK-JISYO.emoji,mode=readonly,encoding=UTF-8
+  '';
+
   xdg.userDirs = {
     enable = true;
     setSessionVariables = false;
