@@ -6,6 +6,7 @@
   # デスクトップ専用パッケージ
   home.packages = with pkgs; [
     _1password-cli
+    art
     blender
     dbeaver-bin
     ffmpeg-headless
