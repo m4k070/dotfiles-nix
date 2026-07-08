@@ -1,4 +1,4 @@
-{ pkgs, lib, claude-code, hibiki, ... }:
+{ pkgs, lib, claude-code, hibiki, herdr, ... }:
 let
   dotnet-combined = with pkgs.dotnetCorePackages; combinePackages [
     sdk_8_0
@@ -10,6 +10,7 @@ in {
     bitwarden-cli
     btop
     claude-code.packages.${pkgs.system}.default
+    herdr.packages.${pkgs.system}.default
     #hibiki.packages.${pkgs.system}.default
     cmake
     curl
