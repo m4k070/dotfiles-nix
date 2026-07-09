@@ -9,9 +9,9 @@ in {
     bat
     bitwarden-cli
     btop
-    claude-code.packages.${pkgs.system}.default
-    herdr.packages.${pkgs.system}.default
-    #hibiki.packages.${pkgs.system}.default
+    claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
+    herdr.packages.${pkgs.stdenv.hostPlatform.system}.default
+    #hibiki.packages.${pkgs.stdenv.hostPlatform.system}.default
     cmake
     curl
     dig

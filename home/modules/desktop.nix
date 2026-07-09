@@ -96,6 +96,7 @@
     enable = true;
     configType = "lua";
     settings = {};
+    extraConfig = "# config managed via hyprland.lua";
   };
 
   xdg.configFile."hypr/hyprland.lua".source = ../../configs/hypr/hyprland.lua;

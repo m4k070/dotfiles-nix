@@ -30,7 +30,7 @@
   let
     username = "makoto";
     pkgs = import nixpkgs {
-      system = "x86_64-linux";
+      localSystem = { system = "x86_64-linux"; };
       config.allowUnfree = true;
     };
     extraSpecialArgs = { inherit nixgl noctalia claude-code hibiki herdr username; };
