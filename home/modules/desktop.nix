@@ -96,10 +96,8 @@
     enable = true;
     configType = "lua";
     settings = {};
-    extraConfig = "# config managed via hyprland.lua";
+    extraConfig = builtins.readFile ../../configs/hypr/hyprland.lua;
   };
-
-  xdg.configFile."hypr/hyprland.lua".source = ../../configs/hypr/hyprland.lua;
 
   programs.starship = {
     enable = true;
