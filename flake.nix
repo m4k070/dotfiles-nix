@@ -11,10 +11,7 @@
       url = "github:nix-community/nixgl";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    noctalia.url = "github:noctalia-dev/noctalia-shell";
     claude-code.url = "github:sadjow/claude-code-nix";
     hibiki = {
       url = "github:linuxmobile/hibiki";
