@@ -10,6 +10,16 @@
 (setq doom-font (font-spec :family "UDEV Gothic" :size 15)
       doom-variable-pitch-font (font-spec :family "UDEV Gothic" :size 15))
 
+;; Braille Pattern (U+2800-28FF) 用フォント指定
+;; UDEV Gothic / Nerd Fontsはこの範囲のグリフを持たず、fontconfigのフォールバックが
+;; Unifont (ビットマップ、advance widthの設計特性が大きく異なる) まで到達してしまう。
+;; Claude Code等のCLIツールがthinkingスピナーにBraille Patternを使うと、
+;; vterm内で横方向に表示がズレる (emacs-libvterm issue #563と同種の現象)。
+;; Adwaita MonoはBraille Patternをネイティブ・等幅で持つため明示的に割り当てる。
+(add-hook 'after-setting-font-hook
+          (lambda ()
+            (set-fontset-font t '(#x2800 . #x28FF) "Adwaita Mono")))
+
 ;; Kanagawa テーマ (kanagawa.nvimと統一, doom sync後に有効)
 (setq doom-theme 'kanagawa-wave)
 
