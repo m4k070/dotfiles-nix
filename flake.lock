@@ -63,11 +63,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1784600306,
-        "narHash": "sha256-fFs6C2fVrhQtgXL5JlczqiTpGy/ALBVUky0DrSl5xEM=",
+        "lastModified": 1784636953,
+        "narHash": "sha256-saPu4m1LrkKclobjUfj8I07dv/bZw8hCXgjqxOICv1Q=",
         "owner": "ogulcancelik",
         "repo": "herdr",
-        "rev": "44f2211608618e56d4bd80ef9c2bac4d9c8be4d2",
+        "rev": "de94cf833072251ff58f60e3478c00f6ceb1dbeb",
         "type": "github"
       },
       "original": {
@@ -190,16 +190,36 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1784629014,
-        "narHash": "sha256-nQqYgAi+TpBqLrCPJ5TWFEK77QfarYNbhLuGsBH1yXM=",
+        "lastModified": 1784635834,
+        "narHash": "sha256-n1BN4db20v+m3Fk/W13D2qDV9MEl9+x1BkHQ68wn1mc=",
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
-        "rev": "d7a71e885c2c4784c48fe4e16f685c6e5f112df5",
+        "rev": "6d7677827ca1d5f09df2abc48c382c93f6b5909c",
         "type": "github"
       },
       "original": {
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
+        "type": "github"
+      }
+    },
+    "omp-flake": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1782402532,
+        "narHash": "sha256-l6ij6KNtHEpTsMeSzay7cnmQ4ZShbsGGvzdjuLgje+w=",
+        "owner": "cernoh",
+        "repo": "omp-flake",
+        "rev": "376ab5f445d4c8bc3f29c9b9971a159f4ebe3883",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cernoh",
+        "repo": "omp-flake",
         "type": "github"
       }
     },
@@ -211,7 +231,8 @@
         "home-manager": "home-manager",
         "nixgl": "nixgl",
         "nixpkgs": "nixpkgs_2",
-        "noctalia": "noctalia"
+        "noctalia": "noctalia",
+        "omp-flake": "omp-flake"
       }
     },
     "rust-overlay": {
