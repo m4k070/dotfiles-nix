@@ -21,16 +21,20 @@
       url = "github:ogulcancelik/herdr";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    omp-flake = {
+      url = "github:cernoh/omp-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, claude-code, hibiki, herdr, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, claude-code, hibiki, herdr, omp-flake, ... }@inputs:
   let
     username = "makoto";
     pkgs = import nixpkgs {
       localSystem = { system = "x86_64-linux"; };
       config.allowUnfree = true;
     };
-    extraSpecialArgs = { inherit nixgl noctalia claude-code hibiki herdr username; };
+    extraSpecialArgs = { inherit nixgl noctalia claude-code hibiki herdr omp-flake username; };
   in {
     nixosConfigurations = {
       sirius = nixpkgs.lib.nixosSystem {

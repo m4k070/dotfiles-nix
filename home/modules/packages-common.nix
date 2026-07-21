@@ -1,10 +1,16 @@
-{ pkgs, lib, claude-code, hibiki, herdr, ... }:
+{ pkgs, lib, claude-code, hibiki, herdr, omp-flake, ... }:
 let
   dotnet-combined = with pkgs.dotnetCorePackages; combinePackages [
     sdk_8_0
     sdk_10_0
   ];
 in {
+  imports = [
+    omp-flake.homeManagerModules.default
+  ];
+
+  programs.oh-my-pi.enable = true;
+
   home.packages = with pkgs; [
     bat
     bitwarden-cli
