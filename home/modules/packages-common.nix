@@ -26,7 +26,6 @@ in {
     gcc
     (lib.lowPrio gdb)
     ghq
-    github-copilot-cli
     gnumake
     go-task
     jq
