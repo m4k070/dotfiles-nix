@@ -25,8 +25,7 @@
     vivaldi-ffmpeg-codecs
     wl-clipboard
     xwayland-satellite
-    # Hermes Agent
-    hermes-agent.packages.${pkgs.system}.default
+    # Hermes Agent (デスクトップGUI。CLI本体はpackages-common.nixで共通インストール)
     hermes-agent.packages.${pkgs.system}.desktop
   ];
 }
