@@ -34,16 +34,17 @@
       url = "github:cernoh/omp-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hermes-agent.url = "github:NousResearch/hermes-agent";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, claude-code, hibiki, herdr, omp-flake, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, claude-code, hibiki, herdr, omp-flake, hermes-agent, ... }@inputs:
   let
     username = "makoto";
     pkgs = import nixpkgs {
       localSystem = { system = "x86_64-linux"; };
       config.allowUnfree = true;
     };
-    extraSpecialArgs = { inherit nixgl noctalia claude-code hibiki herdr omp-flake username; };
+    extraSpecialArgs = { inherit nixgl noctalia claude-code hibiki herdr omp-flake hermes-agent username; };
   in {
     nixosConfigurations = {
       sirius = nixpkgs.lib.nixosSystem {
