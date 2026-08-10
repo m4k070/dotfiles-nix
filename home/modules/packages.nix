@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, hermes-agent, ... }: {
   imports = [
     ./packages-common.nix
   ];
@@ -25,5 +25,7 @@
     vivaldi-ffmpeg-codecs
     wl-clipboard
     xwayland-satellite
+    # Hermes Agent (デスクトップGUI。CLI本体はpackages-common.nixで共通インストール)
+    hermes-agent.packages.${pkgs.system}.desktop
   ];
 }
