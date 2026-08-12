@@ -1,6 +1,9 @@
 { config, pkgs, lib, ... }: {
   home.sessionVariables = {
     "SSH_AUTH_SOCK" = "$HOME/.bitwarden-ssh-agent.sock";
+    # 共有LLM Wiki (~/llm-wiki) のパス。Hermesランタイムは ~/.hermes/.env の
+    # WIKI_PATH が優先されるため、こちらはシェル・デスクトップセッション向け。
+    "WIKI_PATH" = "$HOME/llm-wiki";
   };
 
   programs.direnv = {
