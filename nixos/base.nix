@@ -4,6 +4,49 @@
 
 { config, pkgs, ... }:
 
+let
+  # YubiKey 挿入時に、ロック中の本人のグラフィカルセッションだけを
+  # 専用 PAM サービスで認証して解除する。認証失敗はサービス自体の失敗にしない。
+  # サービスが failed になると、抜去時の ExecStop（ロック）が保証できないため。
+  yubikeyUnlock = pkgs.writeShellScript "yubikey-unlock" ''
+    target_session=""
+
+    while read -r session uid _; do
+      [ "$uid" = "$UID" ] || continue
+      [ "$(${pkgs.systemd}/bin/loginctl show-session "$session" -p Class --value)" = "user" ] || continue
+      case "$(${pkgs.systemd}/bin/loginctl show-session "$session" -p Type --value)" in
+        wayland|x11) ;;
+        *) continue ;;
+      esac
+      [ "$(${pkgs.systemd}/bin/loginctl show-session "$session" -p LockedHint --value)" = "yes" ] || continue
+      target_session="$session"
+      break
+    done < <(${pkgs.systemd}/bin/loginctl list-sessions --no-legend)
+
+    # 挿入時にロックされていなければ、何もしない。
+    if [ -z "$target_session" ]; then
+      echo "unlock skipped: no locked graphical session"
+      exit 0
+    fi
+
+    # U2F 署名とユーザープレゼンス（タッチ）のみを受け付ける。
+    # 15秒以内に認証できた場合だけ、選択済みのセッションを解除する。
+    if ${pkgs.coreutils}/bin/timeout --foreground 15s \
+      ${pkgs.pamtester}/bin/pamtester yubikey-unlock "$USER" authenticate; then
+      # 認証中に別経路で解除された場合は二重に解除要求しない。
+      if [ "$(${pkgs.systemd}/bin/loginctl show-session "$target_session" -p LockedHint --value)" = "yes" ]; then
+        ${pkgs.systemd}/bin/loginctl unlock-session "$target_session"
+        echo "unlock succeeded: session=$target_session authentication=u2f"
+      else
+        echo "unlock skipped: session=$target_session already unlocked"
+      fi
+    else
+      echo "unlock denied or timed out: session=$target_session authentication=u2f" >&2
+    fi
+
+    exit 0
+  '';
+in
 {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -87,6 +130,11 @@
   security.pam.services = {
     login.u2fAuth = true;
     sudo.u2fAuth = true;
+    # 自動解除専用。デフォルト規則を使わず、パスワードへのフォールバックを持たせない。
+    # Noctalia の手動解除は引き続き login PAM（U2F またはパスワード）を使う。
+    yubikey-unlock.text = ''
+      auth required ${pkgs.pam_u2f}/lib/security/pam_u2f.so cue
+    '';
   };
   services.udev.extraRules = ''
       SUBSYSTEM=="usb",ATTRS{idProduct}=="0407",ATTRS{idVendor}=="1050",TAG+="systemd",ENV{SYSTEMD_ALIAS}="/sys/subsystem/usb/devices/yubikey"
@@ -94,16 +142,22 @@
       KERNEL=="hidraw*",ATTRS{idVendor}=="4653",ATTRS{idProduct}=="0004",MODE="0664",GROUP="users"
       SUBSYSTEM=="usb",ATTRS{idVendor}=="18d1",ATTRS{idProduct}=="4ee0",TAG+="uaccess"
   '';
+  # YubiKey を挿してタッチすると解除し、抜いた瞬間に Wayland セッションをロックする。
+  # 仕組み: BindsTo で YubiKey の .device ユニットに束縛し、RemainAfterExit で
+  # デバイスが挿さっている間ユニットを active に保つ。ExecStart は専用 PAM で解除を試み、
+  # デバイスが消えると systemd がユニットを停止して ExecStop が発火する。
+  # ロックは polkit 対話認証を要求する `loginctl lock-sessions` ではなく、
+  # このマシンの実ロッカーである noctalia を直接叩く（niri キーバインドと同一経路）。
   systemd.user.services.yubikey-connect-service = {
     enable = true;
-    after = [ "network.target" ];
-    description = "yubikey connect service";
+    description = "Unlock on YubiKey touch and lock when it is removed";
     bindsTo = [ "sys-subsystem-usb-devices-yubikey.device" ];
-    wantedBy = [ "multi-user.target" "sys-subsystem-usb-devices-yubikey.device"  ];
+    wantedBy = [ "sys-subsystem-usb-devices-yubikey.device" ];
     serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.coreutils}/bin/echo 'Connected Yubikey.'";
-        ExecStop = "/run/current-system/sw/bin/loginctl lock-sessions";
+        Type = "oneshot";
+        RemainAfterExit = true;
+        ExecStart = yubikeyUnlock;
+        ExecStop = "/etc/profiles/per-user/makoto/bin/noctalia msg session lock";
     };
   };
 
