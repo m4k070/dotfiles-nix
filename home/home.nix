@@ -13,6 +13,8 @@
     heroic
     (katago.override { backend = "cuda"; })
     katrain
+    # Node.js (pokemon-champions-battle-engine MCP サーバー・シェル開発用)
+    nodejs
     protonup-qt
     wezterm
     wlogout
