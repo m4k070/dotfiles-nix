@@ -16,6 +16,7 @@
     # Node.js (pokemon-champions-battle-engine MCP サーバー・シェル開発用)
     nodejs
     protonup-qt
+    voicevox
     wezterm
     wlogout
     xdg-user-dirs
