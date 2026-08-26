@@ -17,10 +17,29 @@
     nodejs
     protonup-qt
     voicevox
+    voicevox-engine
     wezterm
     wlogout
     xdg-user-dirs
   ];
+
+  # Voicevox Engine (Hermes TTS 用、localhost:50021)
+  systemd.user.services.voicevox-engine = {
+    Unit = {
+      Description = "VOICEVOX Engine";
+      After = [ "network-online.target" ];
+      Wants = [ "network-online.target" ];
+    };
+    Service = {
+      Type = "simple";
+      ExecStart = "${pkgs.voicevox-engine}/bin/voicevox-engine --port 50021";
+      Restart = "on-failure";
+      RestartSec = 5;
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+  };
 
   # gsconnect は vega の kdeconnect システム統合と連携する GNOME 拡張
   programs.gnome-shell.extensions = [

@@ -254,7 +254,7 @@ in
   networking.firewall = {
     enable = true;
     trustedInterfaces = [ "docker0" "tailscale0" ];
-    allowedTCPPorts = [ 3456 ];
+    allowedTCPPorts = [ 3456 8765 8766 ];
     allowedUDPPorts = [config.services.tailscale.port];
   };
 

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 {
   imports =
     [
@@ -33,6 +33,9 @@
   environment.systemPackages = with pkgs; [
     sunshine
   ];
+
+  # linuxPackages_latest (7.2) は nvidia stable ドライバ (595.71.05) が未対応のため 7.1 を使用
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_7_1;
 
   programs.kdeconnect = {
     enable = true;
@@ -74,6 +77,15 @@
   hardware.sane.enable = true;
   hardware.sane.extraBackends = [ pkgs.sane-airscan ]; # Helpful for network scanners
   services.udev.packages = [ pkgs.brscan5 ];
+
+  # Waydroid (Android コンテナ)
+  # モジュール側で lxc / binder / dbus / firewall(waydroid0) の設定は自動的に行われる。
+  # 初回のみ `sudo waydroid init` でシステムイメージの取得が必要。
+  # nftables ベースのネットワーク設定を使用（カーネルに ip_tables モジュールがないため）
+  virtualisation.waydroid = {
+    enable = true;
+    package = pkgs.waydroid-nftables;
+  };
 
   programs.steam = {
     enable = true;
