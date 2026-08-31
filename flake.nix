@@ -47,9 +47,9 @@
     extraSpecialArgs = { inherit nixgl noctalia claude-code hibiki herdr omp-flake hermes-agent username; };
   in {
     nixosConfigurations = {
-      sirius = nixpkgs.lib.nixosSystem {
+      MTS23001 = nixpkgs.lib.nixosSystem {
         modules = [
-          ./hosts/sirius/configuration.nix
+          ./hosts/MTS23001/configuration.nix
           home-manager.nixosModules.default
           {
             home-manager = {

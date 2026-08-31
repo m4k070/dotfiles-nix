@@ -8,7 +8,7 @@ NixOS + home-manager による設定管理リポジトリ。
 |===
 |ホスト |用途 |homeConfigurations
 
-|sirius
+|MTS23001
 |仕事用PC
 |work
 
@@ -25,11 +25,11 @@ NixOS + home-manager による設定管理リポジトリ。
 .
 ├── flake.nix               # inputs/outputs定義
 ├── hosts/
-│   ├── sirius/             # sirius固有設定（configuration + hardware）
+│   ├── MTS23001/           # MTS23001固有設定（configuration + hardware）
 │   └── vega/               # vega固有設定（configuration + hardware）
 ├── home/
 │   ├── home.nix            # vega向けhome-managerプロファイル
-│   ├── work.nix            # sirius向けhome-managerプロファイル
+│   ├── work.nix            # MTS23001向けhome-managerプロファイル
 │   ├── work-headless.nix   # ヘッドレス環境向けプロファイル
 │   ├── base.nix            # 共通modulesのimport
 │   └── modules/

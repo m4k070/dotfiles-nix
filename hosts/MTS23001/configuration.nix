@@ -14,7 +14,7 @@
       ./hardware-configuration.nix
     ];
 
-  networking.hostName = "sirius"; # Define your hostname.
+  networking.hostName = "MTS23001"; # Define your hostname.
   networking.extraHosts = ''
   10.100.1.150 pvchecker.local
 '';
