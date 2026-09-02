@@ -14,7 +14,6 @@
     firefox
     fuzzel
     gimp
-    microsoft-edge
     nautilus
     networkmanagerapplet
     niri
@@ -22,6 +21,7 @@
     obsidian
     pavucontrol
     udev-gothic
+    vial
     vivaldi-ffmpeg-codecs
     wl-clipboard
     xwayland-satellite
