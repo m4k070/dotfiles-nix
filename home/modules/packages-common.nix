@@ -9,8 +9,6 @@ in {
     omp-flake.homeManagerModules.default
   ];
 
-  programs.oh-my-pi.enable = true;
-
   home.packages = with pkgs; [
     bat
     bitwarden-cli
