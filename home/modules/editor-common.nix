@@ -43,8 +43,9 @@ plugins {
     recursive = true;
   };
 
-  # Emacs 29+ treesit grammars: TypeScript/JavaScript用
-  # Doom :lang (javascript +tree-sitter) が typescript-ts-mode を使うために必要
+  # Emacs 29+ treesit grammars: TypeScript/JavaScript, Markdown用
+  # Doom :lang (javascript +tree-sitter) が typescript-ts-mode を、
+  # (markdown +tree-sitter) が markdown-ts-mode を使うために必要
   # linkFarm が lib/libtree-sitter-<lang>.so を作成し、emacs/tree-sitter/ からロードされる
     xdg.configFile."doom/tree-sitter" = {
     source = "${pkgs.emacs-pgtk.pkgs.treesit-grammars.with-grammars (g: with g; [
@@ -52,6 +53,8 @@ plugins {
       tree-sitter-jsdoc
       tree-sitter-tsx
       tree-sitter-typescript
+      tree-sitter-markdown
+      tree-sitter-markdown-inline
     ])}/lib";
   };
 

@@ -28,9 +28,12 @@ in {
     go-task
     jq
     lazygit
+    mermaid-cli
+    mermaid-filter
     mise
     nb
     opencode
+    pandoc
     platformio
     postgresql
     rclone

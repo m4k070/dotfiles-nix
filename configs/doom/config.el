@@ -169,3 +169,20 @@
 ;;; F# (ionide-vim → lsp-mode + fsautocomplete)
 (after! fsharp-mode
   (setq inferior-fsharp-program "dotnet fsi"))
+
+;;; Markdown: markdown-preview/markdown-export でMermaid図を表示する
+;;
+;; Doom標準の `+markdown-compile-pandoc' は "-F mermaid-filter" を渡さないため
+;; ```mermaid コードフェンスがコードブロックのまま出力される。mermaid-filter
+;; (pandocのJSONフィルタ、内部でmermaid-cliのmmdcを呼びSVG化する) を挟んだ版を
+;; `+markdown-compile-functions' の先頭に追加し、markdown-mode/markdown-ts-mode
+;; 双方のプレビューで図として描画されるようにする。
+(defun +markdown-compile-pandoc-mermaid (beg end output-buffer)
+  "pandoc + mermaid-filterでMermaid図を画像化してからHTMLに変換する。"
+  (when (and (executable-find "pandoc") (executable-find "mermaid-filter"))
+    (call-process-region beg end "pandoc" nil output-buffer nil
+                          "-f" "markdown"
+                          "-t" "html"
+                          "--mathjax"
+                          "-F" "mermaid-filter")))
+(add-to-list '+markdown-compile-functions #'+markdown-compile-pandoc-mermaid)

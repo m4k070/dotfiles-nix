@@ -63,7 +63,7 @@
        (go +lsp +tree-sitter) ; Go (go.nvim 相当)
        (javascript +lsp +tree-sitter) ; TypeScript/JavaScript (ts_ls相当)
        lua                  ; Lua (neovim設定ファイル用)
-       markdown             ; Markdown
+       (markdown +tree-sitter) ; Markdown (markdown-ts-mode使用)
        nix                  ; Nix設定ファイル
        (org +pretty)        ; Org mode
        sh                   ; シェルスクリプト
