@@ -1,9 +1,4 @@
-{ pkgs, hermes-agent, ... }:
-let
-  # upstream の wheel からモジュールが漏れているため、パッチ版を使う。詳細は
-  # ../pkgs/hermes-agent.nix のコメントを参照。
-  hermesAgent = import ../pkgs/hermes-agent.nix { inherit pkgs hermes-agent; };
-in {
+{ pkgs, hermes-agent, ... }: {
   imports = [
     ./packages-common.nix
   ];
@@ -31,6 +26,6 @@ in {
     wl-clipboard
     xwayland-satellite
     # Hermes Agent (デスクトップGUI。CLI本体はpackages-common.nixで共通インストール)
-    hermesAgent.desktop
+    hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.desktop
   ];
 }

@@ -1,9 +1,5 @@
 { pkgs, lib, claude-code, hibiki, herdr, omp-flake, hermes-agent, ... }:
 let
-  # upstream の wheel からモジュールが漏れているため、パッチ版を使う。詳細は
-  # ../pkgs/hermes-agent.nix のコメントを参照。
-  hermesAgent = import ../pkgs/hermes-agent.nix { inherit pkgs hermes-agent; };
-
   dotnet-combined = with pkgs.dotnetCorePackages; combinePackages [
     sdk_8_0
     sdk_10_0
@@ -61,7 +57,7 @@ in {
     typescript-language-server
     yaml-language-server
     # Hermes Agent (CLI/TUI本体、ヘッドレス環境でも利用)
-    hermesAgent.cli
+    hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default
     # vim plugins
     vimPlugins.Ionide-vim
     vimPlugins.nvim-treesitter-parsers.clojure
