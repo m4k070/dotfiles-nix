@@ -2,6 +2,7 @@
   imports = [
     ./base.nix
     ./modules/work-common.nix
+    ./modules/rclone-onedrive.nix
   ];
 
   # nixGL を使ってGPUドライバーをラップする（非NixOS環境向け）
