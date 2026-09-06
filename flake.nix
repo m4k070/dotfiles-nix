@@ -43,6 +43,9 @@
     pkgs = import nixpkgs {
       localSystem = { system = "x86_64-linux"; };
       config.allowUnfree = true;
+      # katrain / katago は overlay 由来。hosts/vega/configuration.nix と揃えて
+      # standalone の homeConfigurations.home でも解決できるようにする。
+      overlays = [ (import ./katrain-nix/katrain-overlay.nix) ];
     };
     extraSpecialArgs = { inherit nixgl noctalia claude-code hibiki herdr omp-flake hermes-agent username; };
   in {

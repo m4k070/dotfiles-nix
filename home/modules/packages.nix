@@ -26,6 +26,6 @@
     wl-clipboard
     xwayland-satellite
     # Hermes Agent (デスクトップGUI。CLI本体はpackages-common.nixで共通インストール)
-    hermes-agent.packages.${pkgs.system}.desktop
+    hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.desktop
   ];
 }
