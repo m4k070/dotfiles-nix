@@ -1,15 +1,6 @@
 {
   description = "My Nix flake";
 
-  nixConfig = {
-    extra-substituters = [
-      "https://herdr.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "herdr.cachix.org-1:3nH7IStRsS0ASfdonA0DCRR2ZrSCeWitZ7Kwew0cR4I="
-    ];
-  };
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     home-manager = {
