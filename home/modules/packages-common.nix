@@ -1,4 +1,4 @@
-{ pkgs, lib, claude-code, hibiki, herdr, omp-flake, hermes-agent, ... }:
+{ pkgs, lib, claude-code, hibiki, herdr, omp-flake, hermes-agent, mdfried, ... }:
 let
   dotnet-combined = with pkgs.dotnetCorePackages; combinePackages [
     sdk_8_0
@@ -58,6 +58,7 @@ in {
     yaml-language-server
     # Hermes Agent (CLI/TUI本体、ヘッドレス環境でも利用)
     hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default
+    mdfried.packages.${pkgs.stdenv.hostPlatform.system}.default
     # vim plugins
     vimPlugins.Ionide-vim
     vimPlugins.nvim-treesitter-parsers.clojure

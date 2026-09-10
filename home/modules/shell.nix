@@ -6,6 +6,12 @@
     "WIKI_PATH" = "$HOME/llm-wiki";
   };
 
+  # ~/.local/bin に置く個人スクリプト（tr-local 等）をシェル・デスクトップ
+  # セッション双方から呼べるようにする。
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
+
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;

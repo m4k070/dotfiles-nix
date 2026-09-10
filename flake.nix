@@ -35,9 +35,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hermes-agent.url = "github:NousResearch/hermes-agent";
+    mdfried = {
+      url = "github:benjajaja/mdfried";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, claude-code, hibiki, herdr, omp-flake, hermes-agent, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixgl, noctalia, claude-code, hibiki, herdr, omp-flake, hermes-agent, mdfried, ... }@inputs:
   let
     username = "makoto";
     pkgs = import nixpkgs {
@@ -47,7 +51,7 @@
       # standalone の homeConfigurations.home でも解決できるようにする。
       overlays = [ (import ./katrain-nix/katrain-overlay.nix) ];
     };
-    extraSpecialArgs = { inherit nixgl noctalia claude-code hibiki herdr omp-flake hermes-agent username; };
+    extraSpecialArgs = { inherit nixgl noctalia claude-code hibiki herdr omp-flake hermes-agent mdfried username; };
   in {
     nixosConfigurations = {
       MTS23001 = nixpkgs.lib.nixosSystem {
