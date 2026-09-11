@@ -34,8 +34,15 @@
     sunshine
   ];
 
-  # linuxPackages_latest (7.2) は nvidia stable ドライバ (595.71.05) が未対応のため 7.1 を使用
-  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_7_1;
+  # Linux 7.2 で strncpy がカーネルから削除されたため、nixos-26.05 の nvidia
+  # ドライバ (production = 595.71.05) は os-interface.c で implicit declaration
+  # エラーになりビルドできない。open modules でも同じ。
+  # 従来使っていた 7.1 / 7.0 は EOL で nixpkgs から削除済みのため、LTS の 6.18 を使う。
+  #
+  # 7.2 に上げたい場合は nvidia 595.99.02 以上が必要（proprietary / open とも
+  # 7.2.4 でビルド成功を確認済み）。ただし 595.99.02 は nixos-unstable のみで
+  # nixos-26.05 には未到達。26.05 が追いついたら 7.2 + latest ドライバに戻せる。
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_18;
 
   programs.kdeconnect = {
     enable = true;
