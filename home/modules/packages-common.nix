@@ -38,7 +38,6 @@ in {
     postgresql
     rclone
     ripgrep
-    rtk
     sd
     uv
     whois
