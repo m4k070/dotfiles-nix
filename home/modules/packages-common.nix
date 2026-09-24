@@ -31,6 +31,7 @@ in {
     mermaid-cli
     mermaid-filter
     mise
+    mtr
     nb
     opencode
     pandoc
