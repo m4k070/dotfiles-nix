@@ -1,6 +1,6 @@
 ;; Thinkpad keyboard keymap with home row mods
 ;; Based on Corne v4 layout (corne_v4.layout.json)
-;; Home row mods: A=Ctrl, S=Alt, D=Gui, F=Ctrl | J=Ctrl, K=Gui, L=Alt, ;=Ctrl
+;; Home row mods (left hand only): A=Ctrl, S=Alt, D=Gui, F=Ctrl
 
 (defcfg
   process-unmapped-keys yes
@@ -21,10 +21,6 @@
   s-hold (tap-hold 200 200 s lalt)
   d-hold (tap-hold 200 200 d lmet)
   f-hold (tap-hold 200 200 f lctl)
-  j-hold (tap-hold 200 200 j lctl)
-  k-hold (tap-hold 200 200 k lmet)
-  l-hold (tap-hold 200 200 l lalt)
-  semicolon-hold (tap-hold 200 200 ; lctl)
 
   ;; Shifted keys for symbols layer
   exclam S-1
@@ -54,7 +50,7 @@
   esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  prtsc slck pause
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc ins  home pgup
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \    del  end  pgdn
-  caps @a-hold @s-hold @d-hold @f-hold g h @j-hold @k-hold @l-hold @semicolon-hold ' ret
+  caps @a-hold @s-hold @d-hold @f-hold g h j k l ; ' ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft up
   lctl lmet lalt           spc            ralt rmet rctl left down rght
 )

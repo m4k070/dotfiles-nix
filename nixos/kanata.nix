@@ -11,8 +11,8 @@ in
     keyboards = {
       thinkpad = {
         configFile = kanata-config;
-        # Empty devices list lets kanata auto-detect keyboards
-        devices = [ ];
+        # Built-in keyboard only; external keyboards (e.g. Corne) are left ungrabbed
+        devices = [ "/dev/input/by-path/platform-i8042-serio-0-event-kbd" ];
       };
     };
   };

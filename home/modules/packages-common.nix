@@ -28,6 +28,7 @@ in {
     go-task
     jq
     lazygit
+    mcat
     mermaid-cli
     mermaid-filter
     mise
