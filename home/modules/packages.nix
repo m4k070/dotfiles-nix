@@ -2,8 +2,9 @@
 let
   # Orca (https://github.com/stablyai/orca) は複数AIコーディングエージェントを
   # 並列実行するElectron製IDE。nixpkgs未収録のためAppImageをラップして導入する。
-  # リリース頻度が高いため、更新時は version/hash を再取得すること
-  # (nix-prefetch-url https://github.com/stablyai/orca/releases/download/v<version>/orca-linux.AppImage)
+  # version/sha256 は .github/workflows/update-orca.yml が毎週更新 PR を作る。
+  # 手動で更新する場合:
+  # nix-prefetch-url https://github.com/stablyai/orca/releases/download/v<version>/orca-linux.AppImage
   orca-ide =
     let
       pname = "orca-ide";

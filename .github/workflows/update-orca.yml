@@ -1,0 +1,48 @@
+name: Update Orca
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # 毎週日曜 0:00 UTC
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Bump orca-ide version and hash
+        id: bump
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          file=home/modules/packages.nix
+          latest=$(gh api repos/stablyai/orca/releases/latest --jq '.tag_name | ltrimstr("v")')
+          current=$(ruby -ne 'puts $1 if /orca-ide/../mainProgram/ and /version = "([^"]+)"/' "$file")
+          echo "current=$current latest=$latest"
+          if [ "$latest" = "$current" ]; then
+            exit 0
+          fi
+          hash=$(nix-prefetch-url "https://github.com/stablyai/orca/releases/download/v${latest}/orca-linux.AppImage")
+          ruby -i -pe "
+            if /orca-ide =/../mainProgram/
+              sub(/version = \"[^\"]+\"/, 'version = \"${latest}\"')
+              sub(/sha256 = \"[^\"]+\"/, 'sha256 = \"${hash}\"')
+            end
+          " "$file"
+          git diff --stat
+          echo "version=$latest" >> "$GITHUB_OUTPUT"
+
+      - if: steps.bump.outputs.version != ''
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: update-orca
+          commit-message: "chore: update orca-ide to ${{ steps.bump.outputs.version }}"
+          title: "chore: update orca-ide to ${{ steps.bump.outputs.version }}"
+          labels: dependencies
+          body: "https://github.com/stablyai/orca/releases/tag/v${{ steps.bump.outputs.version }}"
