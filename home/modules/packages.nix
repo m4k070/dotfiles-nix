@@ -30,6 +30,11 @@ let
         mainProgram = pname;
       };
     };
+  # mo (https://github.com/k1LoW/mo) — Markdown ビューア。nixpkgs の `mo` は同名の別ツール
+  # (tests-always-included/mo)、k1LoW/mo は `mo-viewer` として unstable 以降にのみ収録。
+  # pinned nixpkgs (nixos-26.05) では解決できないため home/pkgs/mo でパッケージングする。
+  # version/sha256 は .github/workflows/update-mo.yml が毎週更新 PR を作る。
+  mo = pkgs.callPackage ../pkgs/mo { };
 in {
   imports = [
     ./packages-common.nix
@@ -41,11 +46,13 @@ in {
     art
     blender
     dbeaver-bin
+    drawio
     ffmpeg-headless
     ffmpegthumbnailer
     firefox
     fuzzel
     gimp
+    mo
     nautilus
     networkmanagerapplet
     niri
@@ -53,6 +60,7 @@ in {
     obsidian
     orca-ide
     pavucontrol
+    qimgv
     udev-gothic
     vial
     vivaldi-ffmpeg-codecs
