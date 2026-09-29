@@ -32,6 +32,7 @@ in {
     mermaid-cli
     mermaid-filter
     mise
+    mo
     mtr
     nb
     opencode
