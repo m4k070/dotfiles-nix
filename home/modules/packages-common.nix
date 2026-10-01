@@ -40,6 +40,7 @@ in {
     postgresql
     rclone
     ripgrep
+    ruby
     sd
     uv
     whois
